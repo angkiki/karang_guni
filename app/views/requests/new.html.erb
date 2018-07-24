@@ -1,0 +1,26 @@
+<h2 class="text-center">New Request</h2>
+
+<%= form_for @request do |f| %>
+
+  <div class='row'>
+    <div class='col-md-6 ml-auto mr-auto'>
+      <%= f.label :title, class: "form-group" %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Enter A Title For Your Request" %>
+    </div>
+  </div>
+
+  <br />
+
+  <%= f.fields_for :items, Item.new do |f| %>
+    <%= render 'items_form', f: f %>
+  <% end %>
+
+  <%= f.fields_for :items, Item.new do |f| %>
+    <%= render 'items_form', f: f %>
+  <% end %>
+
+  <div align="center">
+    <%= f.submit 'Submit', class: "btn btn-md btn-success" %>
+  </div>
+
+<% end %>
