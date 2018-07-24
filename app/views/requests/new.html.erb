@@ -11,16 +11,48 @@
 
   <br />
 
-  <%= f.fields_for :items, Item.new do |f| %>
-    <%= render 'items_form', f: f %>
-  <% end %>
+  <div id="items-forms-holder">
+    <div>
+      <%= f.fields_for :items, Item.new do |f| %>
+        <%= render 'items_form', f: f %>
+      <% end %>
+    </div>
+  </div>
 
-  <%= f.fields_for :items, Item.new do |f| %>
-    <%= render 'items_form', f: f %>
-  <% end %>
+  <div align="center">
+    <button type="button" id="add-item-field" class="btn btn-md btn-primary">Add Item</button>
+  </div>
+
+  <br />
 
   <div align="center">
     <%= f.submit 'Submit', class: "btn btn-md btn-success" %>
   </div>
 
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready( () => {
+    let counter = 1;
+
+    $('#add-item-field').click( () => {
+      let itemsForm = $('#items-forms-holder').first().html();
+      let inputs = $(itemsForm).find('input')
+
+      for (let i = 0; i < inputs.length; i++) {
+        let currentName = inputs[i].name;
+        let currentId = inputs[i].id;
+
+        let newName = currentName.replace('0', counter);
+        let newId = currentId.replace('0', counter);
+
+        itemsForm = itemsForm.replace(currentName, newName);
+        itemsForm = itemsForm.replace(currentId, newId);
+      }
+
+      $(itemsForm).appendTo( $('#items-forms-holder') );
+      counter += 1
+    });
+
+  });
+</script>
