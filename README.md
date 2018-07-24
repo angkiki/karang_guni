@@ -1,24 +1,31 @@
-# README
+#TO-DO List:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Jodi:
+* Seller (Implement Devise)
+##### Columns for Seller Table:
+* name
+* email
+* password
+* hp
+* address
 
-Things you may want to cover:
 
-* Ruby version
+### Bryan:
+* Buyer (Implement Devise)
+##### Columns for Buyer Table:
+* name
+* email
+* password
+* hp
+* rating
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Gabriel:
+* Request/Items (Implement One-Many, Nested Attributes)
+##### Columns for Request
+* seller_id
+* title
+##### Columns for Item
+* request_id
+* name
+* description
+* qty
