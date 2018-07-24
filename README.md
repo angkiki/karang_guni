@@ -9,7 +9,6 @@
 * hp
 * address
 
-
 ### Bryan:
 * Buyer (Implement Devise)
 ##### Columns for Buyer Table:
