@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_065034) do
+ActiveRecord::Schema.define(version: 2018_07_24_072332) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  
+
+  create_table "buyers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "hp"
+    t.string "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["email"], name: "index_buyers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "request_id"
+    t.string "name"
+    t.string "description"
+    t.string "qty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_items_on_request_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "seller_id"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sellers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -32,34 +70,6 @@ ActiveRecord::Schema.define(version: 2018_07_24_065034) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_sellers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true
-  end
-    
-  create_table "buyers", force: :cascade do |t|
-    t.string "hp"
-    t.string "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-    t.index ["email"], name: "index_buyers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
-  end
-
-
-  create_table "items", force: :cascade do |t|
-    t.bigint "request_id"
-    t.string "name"
-    t.string "description"
-    t.string "qty"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["request_id"], name: "index_items_on_request_id"
-  end
-
-  create_table "requests", force: :cascade do |t|
-    t.integer "seller_id"
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "items", "requests"
