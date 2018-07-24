@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   devise_for :sellers, controllers: { sessions: 'sellers/sessions', registrations: 'sellers/registrations'}
   devise_for :buyers, controllers: { registrations: 'buyers/registrations', sessions: 'buyers/sessions' }
   root "home#index"
+  resources :requests, except: :destroy
 end

@@ -1,0 +1,15 @@
+<h2 class="text-center">Your Requests</h2>
+
+<table class="table table-striped">
+  <tr>
+    <th>Request</th>
+    <th>No. of Items</th>
+  </tr>
+
+  <% @request.each do |r| %>
+    <tr>
+      <td><%= r.title %></td>
+      <td><%= r.items.count %></td>
+    </tr>
+  <% end %>
+</table>
