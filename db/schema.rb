@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 2018_07_25_064759) do
     t.index ["request_id"], name: "index_items_on_request_id"
   end
 
+  create_table "message", force: :cascade do |t|
+    t.text "content"
+    t.integer "transaction_id"
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "requests", force: :cascade do |t|
     t.integer "seller_id"
     t.string "title"
