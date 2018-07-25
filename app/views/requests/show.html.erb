@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 class="text-center"><%= @request.title %></h1>
+
+  <h3 class='text-center'>Items</h3>
+
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Description</th>
+    </tr>
+
+    <% @request.items.each do |i| %>
+      <tr>
+        <td><%= i.name %></td>
+        <td><%= i.qty %></td>
+        <td><%= i.description %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div align="center">
+  <%= link_to 'Back', requests_path %>
+</div>
