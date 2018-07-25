@@ -18,6 +18,16 @@
       </tr>
     <% end %>
   </table>
+
+  <br /><br />
+
+  <% if current_buyer %>
+    <div align="center">
+      <%= link_to 'Bid', new_buyer_request_path(req_id: @request.id), class: 'btn btn-success btn-md' %>
+    </div>
+  <% end %>
+
+  <br /><br />
 </div>
 
 <div align="center">

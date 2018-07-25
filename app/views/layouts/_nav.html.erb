@@ -8,6 +8,9 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to 'Requests', requests_path, class: "nav-link" %>
+      </li>
 
       <li class="nav-item">
         <%= link_to 'Seller Registration', new_seller_registration_path, class: "nav-link" %>
@@ -36,10 +39,13 @@
         </a>
 
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to 'Seller Sign In', new_seller_session_path, class: 'dropdown-item' %>
-          <%= link_to 'Buyer Sign In', new_buyer_session_path, class: 'dropdown-item' %>
+          <% unless current_buyer || current_seller %>
+            <%= link_to 'Seller Sign In', new_seller_session_path, class: 'dropdown-item' %>
+            <%= link_to 'Buyer Sign In', new_buyer_session_path, class: 'dropdown-item' %>
+          <% end %>
 
           <% if current_buyer %>
+            <%= link_to 'My Bids', buyer_bids_path, class: 'dropdown-item' %>
             <%= link_to 'Log Out', destroy_buyer_session_path, method: :delete, class: 'dropdown-item' %>
           <% end %>
 
