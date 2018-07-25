@@ -60,3 +60,11 @@ class Sellers::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 end
+
+
+class Seller::ParameterSanitizer < Devise::ParameterSanitizer
+  def initialize(*)
+    super
+    permit(:sign_up, keys: [:name, :hp, :address])
+  end
+end

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_202150) do
+ActiveRecord::Schema.define(version: 2018_07_25_064759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "buyer_requests", force: :cascade do |t|
+    t.bigint "buyer_id"
+    t.bigint "request_id"
+    t.integer "price"
+    t.boolean "sold", default: false
+    t.index ["buyer_id"], name: "index_buyer_requests_on_buyer_id"
+    t.index ["request_id"], name: "index_buyer_requests_on_request_id"
+  end
 
   create_table "buyers", force: :cascade do |t|
     t.string "email", default: "", null: false
