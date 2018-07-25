@@ -4,4 +4,9 @@ Rails.application.routes.draw do
   devise_for :buyers, controllers: { registrations: 'buyers/registrations', sessions: 'buyers/sessions' }
   root "home#index"
   resources :requests, except: :destroy
+  
+  get '/buyers/:id', to: 'buyers#index', as: 'buyer'
+  get '/sellers/:id', to: 'sellers#index', as: 'seller'
+
+
 end

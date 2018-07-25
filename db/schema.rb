@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_072332) do
+ActiveRecord::Schema.define(version: 2018_07_25_090112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "buyer_requests", force: :cascade do |t|
+    t.bigint "buyer_id"
+    t.bigint "request_id"
+    t.integer "price"
+    t.boolean "sold", default: false
+    t.index ["buyer_id"], name: "index_buyer_requests_on_buyer_id"
+    t.index ["request_id"], name: "index_buyer_requests_on_request_id"
+  end
 
   create_table "buyers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,6 +54,16 @@ ActiveRecord::Schema.define(version: 2018_07_24_072332) do
     t.index ["request_id"], name: "index_items_on_request_id"
   end
 
+  create_table "message", force: :cascade do |t|
+    t.text "content"
+    t.integer "transaction_id"
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "requests", force: :cascade do |t|
     t.integer "seller_id"
     t.string "title"
@@ -70,6 +89,14 @@ ActiveRecord::Schema.define(version: 2018_07_24_072332) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_sellers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true
+  end
+
+  create_table "sender_reciever", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "reciever_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "items", "requests"

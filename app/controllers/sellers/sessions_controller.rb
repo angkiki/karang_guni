@@ -2,9 +2,6 @@
 
 class Sellers::SessionsController < Devise::SessionsController
 
-
-
-  
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -22,7 +19,11 @@ class Sellers::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def after_sign_in_path_for(resource)
+    seller_path(resource)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
