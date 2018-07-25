@@ -1,6 +1,6 @@
 class UpdateChatCol < ActiveRecord::Migration[5.2]
   def change
-    create_table :message do |t|
+    create_table :messages do |t|
       t.text :content
       t.integer :transaction_id
       t.integer :sender_id
