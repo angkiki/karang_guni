@@ -29,7 +29,8 @@ end
 
 # Parameters: {"utf8"=>"✓", "authenticity_token"=>"Rs5UZXfh7xPdej+BF7F+QVr0igQpBrgl0DqN1YL0VvmHD4xgUVU+slxTtvsbkkFoWI62UUnFIdW4STz0/tYdDQ==", "buyer"=>{"email"=>"bryan@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
 
-# HAHA
+
+# BYE
 # HELLO
 
 
