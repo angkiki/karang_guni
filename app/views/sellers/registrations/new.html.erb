@@ -1,47 +1,71 @@
-<div class='seller text-center'>
-  
-<h2>Seller's Sign up</h2>
+<div class='seller container'>
+
+  <h2 class="text-center">Seller's Sign up</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+    <br />
+
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <br />
+
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :hp %><br />
-      <%= f.text_field :hp, autofocus: true, autocomplete: "hp" %>
+    <br />
+
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :address %><br />
-      <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+    <br />
+
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <%= f.label :hp %><br />
+        <%= f.text_field :hp, autofocus: true, autocomplete: "hp", class: "form-control" %>
+      </div>
     </div>
 
-    <div class="actions">
+    <br />
+
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <%= f.label :address %><br />
+        <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control" %>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="actions" align="center">
       <%= f.submit "Sign up" %>
     </div>
   <% end %>
 
-  <%= render "sellers/shared/links" %>
+  <%#= render "sellers/shared/links" %>
 </div>
