@@ -1,15 +1,17 @@
-<h2 class="text-center">Your Requests</h2>
+<div class="container">
+  <h2 class="text-center">Your Requests</h2>
 
-<table class="table table-striped">
-  <tr>
-    <th>Request</th>
-    <th>No. of Items</th>
-  </tr>
-
-  <% @request.each do |r| %>
+  <table class="table table-striped">
     <tr>
-      <td><%= r.title %></td>
-      <td><%= r.items.count %></td>
+      <th>Request</th>
+      <th>Postal Code</th>
     </tr>
-  <% end %>
-</table>
+
+    <% @request.each do |r| %>
+      <tr>
+        <td><%= link_to r.title, request_path(r.id) %></td>
+        <td><%= r.seller.address %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

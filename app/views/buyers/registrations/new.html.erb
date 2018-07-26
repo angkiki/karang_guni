@@ -1,42 +1,62 @@
-<div class='buyer text-center'>
+<div class='buyer container'>
 
-  <h2>Buyer's Sign up</h2>
+  <h2 class="text-center">Buyer's Sign up</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <%= devise_error_messages! %>
 
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name, placeholder: "Name"%>
-  </p>
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :hp %><br>
-    <%= f.text_field :hp, placeholder: "Contact"%>
-  </div>
+    <br />
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
-  </div>
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <%= f.label :hp %><br>
+        <%= f.text_field :hp, placeholder: "Contact", class: "form-control"%>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
-  </div>
+    <br />
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password" %>
-  </div>
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <br />
 
-  <%= render "buyers/shared/links" %>
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="actions" align="center">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+
+  <%#= render "buyers/shared/links" %>
 <div>

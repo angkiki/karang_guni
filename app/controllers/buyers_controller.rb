@@ -1,14 +1,25 @@
 class BuyersController < ApplicationController
+  before_action :only_buyer
 
-    def index
-        @buyer = Buyer.find(params[:id])
-        # current_buyer => getting back the class instance buyer.find(params[:id])
-    end 
+  def index
+    @buyer = Buyer.find(params[:id])
+    # current_buyer => getting back the class instance buyer.find(params[:id])
+  end
 
-    private
+  def bids
+    @bids = current_buyer.requests
+  end
 
+  private
     def buyers_params
-        params.require(:buyer).permit(:name, :email, :hp)
+      params.require(:buyer).permit(:name, :email, :hp)
+    end
+
+    def only_buyer
+      unless current_buyer
+        flash[:danger] = "Unauthorised Access"
+        redirect_to root_path
+      end
     end
 end
 
@@ -24,12 +35,7 @@ end
 # @buyer.name => "Bryan"
 # @buyer => { id: 1, name: "Bryan", email: "abc@abc.com", hp: 123 }
 
-# @buyer = Buyer.where(name: "Bryan") # returns an array of buyers named Bryan 
+# @buyer = Buyer.where(name: "Bryan") # returns an array of buyers named Bryan
 
 
 # Parameters: {"utf8"=>"✓", "authenticity_token"=>"Rs5UZXfh7xPdej+BF7F+QVr0igQpBrgl0DqN1YL0VvmHD4xgUVU+slxTtvsbkkFoWI62UUnFIdW4STz0/tYdDQ==", "buyer"=>{"email"=>"bryan@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
-
-
-
-
-
