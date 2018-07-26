@@ -12,7 +12,7 @@ class BuyerRequestsController < ApplicationController
 
     if @buyer_request.save
       flash[:success] = "Successfully Submitted Bid!"
-      redirect_to requests_path
+      redirect_to buyer_bids_path
     else
       flash[:danger] = @buyer_request.errors.messages
       redirect_to new_buyer_request_path(req_id: params[:req_id])
