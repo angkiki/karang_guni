@@ -1,11 +1,11 @@
-<h1>Seller's account</h1>
+<div class='text-center'>
+    <h1>Seller's account</h1>
 
-
-<% if current_seller %>
-
-    <%= current_seller.name %><br/>
-    <%= current_seller.email %>
-    
-<% end %>
-<br>
+    <% if current_seller %>
+        <%= current_seller.name %><br/>
+        <%= current_seller.email %>  
+    <% end %><br>
+    <%= link_to 'Log Out', destroy_seller_session_path, method: :delete %>
+    <br>
 <%= link_to 'Messages', show_seller_message_path %>
+</div>
