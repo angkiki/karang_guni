@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
   get '/buyer/request/:req_id', to: 'buyer_requests#new', as: 'new_buyer_request'
   post '/buyer/request/:req_id', to: 'buyer_requests#create', as: 'create_buyer_request'
-
-  # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+  
+ # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
   #            buyer
   # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
   get '/buyers/bids', to: 'buyers#bids', as: 'buyer_bids'
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   post '/messages', to: 'messages#create'
   get '/messages', to: 'messages#index'
 
+  get '/buyer/messages', to:'messages#buyer_show', as:'show_buyer_message'
   get '/seller/messages', to:'messages#seller_show', as:'show_seller_message'
 
 
