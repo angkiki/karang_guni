@@ -1,12 +1,20 @@
 class SellersController < ApplicationController
-    def index
-        @seller = Seller.find(params[:id])
-        # current_seller => getting back the class instance Seller.find(params[:id])
-    end 
+  before_action :only_seller
 
-    private
+  def request_index
+    @requests = current_seller.requests
+  end
 
-    def sellers_params
-        params.require(:seller).permit(:name, :email, :hp)
+  def request_bids
+    @request = Request.find(params[:req_id])
+    @bids = @request.buyer_requests
+  end
+
+  private
+    def only_seller
+      unless current_seller
+        flash[:danger] = "Unauthorised Access"
+        redirect_to root_path
+      end
     end
 end

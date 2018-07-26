@@ -4,11 +4,15 @@
   <table class="table table-striped">
     <tr>
       <th>Title of Bid</th>
+      <th>Bid Price</th>
+      <th>Status</th>
     </tr>
 
-    <% @bids.each do |b| %>
+    <% @requests.each do |request| %>
       <tr>
-        <td><%= b.title %></td>
+        <td><%= request.title %></td>
+        <td>$<%= request.buyer_requests.find_by(buyer_id: current_buyer.id).price %></td>
+        <td><%= request.status ? "Closed" : "Open" %></td>
       </tr>
     <% end %>
   </table>

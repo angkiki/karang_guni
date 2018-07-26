@@ -1,0 +1,12 @@
+<div class='text-center'>
+<h1>Hello I am the seller</h1>
+
+<%= form_for @message, :local => true do |f| %>
+    <%= f.text_area :content, size: "60x12" %>
+    <%= f.hidden_field :sender, :value => 'true' %>
+    <%= f.hidden_field :seller_id, :value => @seller %>
+    <%= f.hidden_field :buyer_id, :value => @buyer %>
+
+    <%= f.submit "Create" %>
+<% end %>
+</div>

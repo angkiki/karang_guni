@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     if @request.save
       flash[:success] = "Successfully Saved Requests"
-      redirect_to requests_path
+      redirect_to request_index_path
     else
       flash[:danger] = @request.errors.messages
       render :new

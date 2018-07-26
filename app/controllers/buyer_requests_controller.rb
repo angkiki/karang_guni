@@ -1,5 +1,6 @@
 class BuyerRequestsController < ApplicationController
   before_action :only_buyer
+  before_action :cannot_bid_twice, only: [:new]
 
   def new
     @buyer_request = BuyerRequest.new
@@ -27,6 +28,14 @@ class BuyerRequestsController < ApplicationController
       unless current_buyer
         flash[:danger] = "Unauthorised Access"
         redirect_to root_path
+      end
+    end
+
+    def cannot_bid_twice
+      @bid = BuyerRequest.find_by(buyer_id: current_buyer.id, request_id: params[:req_id])
+      if @bid != nil
+        flash[:danger] = "You Can Only Bid Once!"
+        redirect_to requests_path
       end
     end
 end

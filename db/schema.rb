@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_07_25_090112) do
+=======
+
+ActiveRecord::Schema.define(version: 2018_07_26_061153) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,13 +60,12 @@ ActiveRecord::Schema.define(version: 2018_07_25_090112) do
   end
 
   create_table "messages", force: :cascade do |t|
+    t.bigint "buyer_id"
+    t.bigint "seller_id"
+    t.boolean "sender"
     t.text "content"
-    t.integer "transaction_id"
-    t.integer "sender_id"
-    t.integer "receiver_id"
-    t.boolean "read", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_messages_on_buyer_id"
+    t.index ["seller_id"], name: "index_messages_on_seller_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -69,6 +73,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_090112) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status", default: false
   end
 
   create_table "sellers", force: :cascade do |t|
