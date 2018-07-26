@@ -5,4 +5,5 @@ class Seller < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :requests
+  has_many :messages
 end

@@ -1,45 +1,56 @@
 class MessagesController < ApplicationController
-    
-    def index
-        if @messages == nil
-            @messages = [{:content => 'No messages'}]
-        else
-            @message= Message.all
-        end
-    end
+  before_action :only_buyer, only: [:buyer_new, :buyer_show]
+  before_action :only_seller, only: [:seller_new, :seller_show]
 
-    def buyer_new
-        @message = Message.new
-        @buyer = current_buyer
-        @seller = Seller.find(params[:seller_id])
-    end
+  def buyer_new
+    @message = Message.new
+    @buyer = current_buyer
+    @seller = Seller.find(params[:seller_id])
+  end
 
-    def seller_new
-        @message = Message.new
-        @seller = current_seller
-        @buyer = Buyer.find(params[:buyer_id])
-    end
+  def seller_new
+    @message = Message.new
+    @seller = current_seller
+    @buyer = Buyer.find(params[:buyer_id])
+  end
 
-    def create
-        @message = Message.new(message_params)
-        @message.save
+  def create
+    @message = Message.new(message_params)
+    @message.save
 
-        redirect_to messages_path
+    if current_buyer
+      redirect_to show_buyer_message_path
+    else
+      redirect_to show_seller_message_path
     end
+  end
 
-    def seller_show
-        @seller = current_seller
-        @messages = Message.where(seller_id: @seller.id, sender: 'false')
-    end
+  def seller_show
+    @seller_id = current_seller.id
+    @buyers = current_seller.messages.map { |m| m.buyer }.uniq
+  end
 
-    def buyer_show
-        @buyer = current_buyer
-        @messages = Message.where(buyer_id: @buyer.id, sender: 'true')
-    end
-    
-    private
+  def buyer_show
+    @buyer_id = current_buyer.id
+    @sellers = current_buyer.messages.map { |m| m.seller }.uniq
+  end
+
+  private
     def message_params
-        params.require(:message).permit(:content, :sender, :buyer_id, :seller_id)
+      params.require(:message).permit(:content, :sender, :buyer_id, :seller_id)
     end
 
+    def only_buyer
+      unless current_buyer
+        flash[:danger] = "Unauthorised Access"
+        redirect_to root_path
+      end
+    end
+
+    def only_seller
+      unless current_seller
+        flash[:danger] = "Unauthorised Access"
+        redirect_to root_path
+      end
+    end
 end
