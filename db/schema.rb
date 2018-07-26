@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_07_26_061153) do
 
   # These are extensions that must be enabled in order to support this database
@@ -52,6 +53,15 @@ ActiveRecord::Schema.define(version: 2018_07_26_061153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["request_id"], name: "index_items_on_request_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "buyer_id"
+    t.bigint "seller_id"
+    t.boolean "sender"
+    t.text "content"
+    t.index ["buyer_id"], name: "index_messages_on_buyer_id"
+    t.index ["seller_id"], name: "index_messages_on_seller_id"
   end
 
   create_table "requests", force: :cascade do |t|
