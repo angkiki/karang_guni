@@ -7,7 +7,7 @@ class BuyersController < ApplicationController
   end
 
   def bids
-    @bids = current_buyer.requests
+    @requests = current_buyer.requests
   end
 
   private

@@ -25,11 +25,19 @@
     <div align="center">
       <%= link_to 'Bid', new_buyer_request_path(req_id: @request.id), class: 'btn btn-success btn-md' %>
     </div>
+
+    <div align="center">
+      <%= link_to 'Back', requests_path %>
+    </div>
+
+  <% else %>
+
+    <div align="center">
+      <%= link_to 'View Bids', request_bids_path(req_id: @request.id), class: 'btn btn-xs btn-success' %></br>
+      <%= link_to 'Back', request_index_path %>
+    </div>
+
   <% end %>
 
   <br /><br />
-</div>
-
-<div align="center">
-  <%= link_to 'Back', requests_path %>
 </div>
