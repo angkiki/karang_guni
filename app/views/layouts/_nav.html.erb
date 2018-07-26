@@ -27,6 +27,10 @@
         <li class="nav-item">
           <%= link_to 'My Requests', request_index_path, class: "nav-link" %>
         </li>
+
+        <li class="nav-item">
+          <%= link_to 'My Messages', show_seller_message_path, class: "nav-link" %>
+        </li>
       <% end %>
 
       <% if current_buyer %>

@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
   before_action :only_sellers, only: [:new, :create]
 
   def index
-    @request = Request.includes(:items).all
+    @request = Request.includes(:items).where(status: false)
   end
 
   def new

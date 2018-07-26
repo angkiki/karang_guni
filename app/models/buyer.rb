@@ -7,4 +7,5 @@ class Buyer < ApplicationRecord
 
   has_many :buyer_requests
   has_many :requests, through: :buyer_requests
+  has_many :messages
 end

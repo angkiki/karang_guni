@@ -6,6 +6,7 @@
       <th>Title of Bid</th>
       <th>Bid Price</th>
       <th>Status</th>
+      <th>Accepted</th>
     </tr>
 
     <% @requests.each do |request| %>
@@ -13,6 +14,7 @@
         <td><%= request.title %></td>
         <td>$<%= request.buyer_requests.find_by(buyer_id: current_buyer.id).price %></td>
         <td><%= request.status ? "Closed" : "Open" %></td>
+        <td><%= request.buyer_requests.find_by(buyer_id: current_buyer.id).sold ? "Yes" : "No" %></td>
       </tr>
     <% end %>
   </table>

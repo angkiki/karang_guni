@@ -5,12 +5,16 @@
     <tr>
       <th>Price</th>
       <th>Buyer</th>
+      <th>Message</th>
+      <th>Accept</th>
     </tr>
 
     <% @bids.each do |bid| %>
       <tr>
         <td><%= bid.price %></td>
         <td><%= bid.buyer.name %></td>
+        <td><%= link_to 'Message', new_seller_message_path(buyer_id: bid.buyer_id), class: 'btn btn-xs btn-primary' %></td>
+        <td><%= link_to 'Accept', accept_bid_path(req_id: @request.id, br_id: bid.id), class: 'btn btn-xs btn-success' %></td>
       </tr>
     <% end %>
   </table>

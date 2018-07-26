@@ -1,8 +1,25 @@
-<h1>All of Buyer's message</h1>
+<div class="container">
+  <h1 class="text-center">All of Buyer's message</h1>
 
-<ul>
-<% @messages.each do |message| %>
-    <li><%= message.content %></li>
-    <%= link_to 'Reply', new_buyer_message_path(message.seller_id) %>
-<% end %>
-</ul>
+  <br />
+
+  <% @sellers.each do |seller| %>
+    <h3 class="text-center">Convo With: <%= seller.name %></h3>
+
+    <% seller.messages.where(buyer_id: @buyer_id).each do |message| %>
+      <p class="message text-center <%= message.sender %>">
+        <%= message.content %>
+      </p>
+    <% end %>
+
+    <p class="text-center">
+      <%= link_to 'Reply', new_buyer_message_path(seller) %>
+    </p>
+  <% end %>
+</div>
+
+<style media="screen">
+  .false {
+    background-color: grey;
+  }
+</style>
