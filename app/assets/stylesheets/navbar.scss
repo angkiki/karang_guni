@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+.jodi_nav {
+    padding: 30px 200px;
+    background-color: white !important;
+    box-shadow: 0px 3px 3px #eeeeee;
+    margin-bottom: 50px;
+
+    .nav-item {
+        padding: 0px 30px;
+        border-left: 1px solid #57BDB5;
+    }
+
+    .nav-item:nth-child(1) {
+        border-left: 0px solid #57BDB5;
+    }
+
+    .nav-item:last-child {
+        padding-right: 0px;
+    }
+
+    .nav-link {
+        padding: 0px;
+        font-size: 14px;
+    }
+
+    .dropdown-menu {
+        // background-color: red;
+        margin-top: 10px;
+        font-size: 14px;
+        text-align: center;
+        padding: 0px;
+    }
+
+    .dropdown-item {
+        padding: 15px;
+        border-bottom: 1px solid #57BDB5;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    .dropdown-item:last-child {
+        border-bottom: 0px solid #57BDB5;
+    }
+
+}
