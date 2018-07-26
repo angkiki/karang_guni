@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 class="text-center">My Requests</h1>
+
+  <table class="table table-striped">
+    <tr>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Bid Count</th>
+      <th></th>
+    </tr>
+
+    <% @requests.each do |r| %>
+      <tr>
+        <td><%= link_to r.title, request_path(r.id) %></td>
+        <td><%= r.status ? "Closed" : "Open" %></td>
+        <td><%= r.buyer_requests.count %></td>
+        <td><%= link_to 'View Bids', request_bids_path(req_id: r.id), class: 'btn btn-xs btn-success' %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <h1 class="text-center">My Bids</h1>
+
+  <table class="table table-striped">
+    <tr>
+      <th>Title of Bid</th>
+      <th>Bid Price</th>
+      <th>Status</th>
+    </tr>
+
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.title %></td>
+        <td>$<%= request.buyer_requests.find_by(buyer_id: current_buyer.id).price %></td>
+        <td><%= request.status ? "Closed" : "Open" %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

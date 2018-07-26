@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 class="text-center">Bids for <%= @request.title %></h1>
+
+  <table class="table table-striped">
+    <tr>
+      <th>Price</th>
+      <th>Buyer</th>
+    </tr>
+
+    <% @bids.each do |bid| %>
+      <tr>
+        <td><%= bid.price %></td>
+        <td><%= bid.buyer.name %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div align="center">
+  <%= link_to 'Back', request_index_path, class: 'btn btn-md btn-danger' %>
+</div>

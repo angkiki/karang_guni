@@ -1,43 +1,67 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-  <% if current_buyer %>
-    <%= link_to current_buyer.name, root_path, class: 'navbar-brand' %>
-  <% elsif current_seller %>
-    <%= link_to current_seller.name, root_path, class: 'navbar-brand' %>
-  <% else %>
-    <%= link_to 'Home', root_path, class: 'navbar-brand' %>
-  <% end %>
-  
+  <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <% if current_seller %>
+        <li class="nav-item">
+          <%= link_to 'New Request', new_request_path, class: "nav-link" %>
+        </li>
 
-      <li class="nav-item">
-        <%= link_to 'User Registration', new_seller_registration_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Karang Guni Registration', new_buyer_registration_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'New Request', new_request_path, class: "nav-link" %>
-      </li>
+        <li class="nav-item">
+          <%= link_to 'My Requests', request_index_path, class: "nav-link" %>
+        </li>
+      <% end %>
 
+      <% if current_buyer %>
+        <li class="nav-item">
+          <%= link_to 'Requests', requests_path, class: "nav-link" %>
+        </li>
+      <% end %>
 
+      <% unless current_buyer || current_seller %>
+        <li class="nav-item">
+          <%= link_to 'Seller Registration', new_seller_registration_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Buyer Registration', new_buyer_registration_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          <% if current_buyer %>
+            <%= current_buyer.name %>
+          <% elsif current_seller %>
+            <%= current_seller.name %>
+          <% else %>
+            Log In
+          <% end %>
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <% unless current_buyer || current_seller %>
+            <%= link_to 'Seller Sign In', new_seller_session_path, class: 'dropdown-item' %>
+            <%= link_to 'Buyer Sign In', new_buyer_session_path, class: 'dropdown-item' %>
+          <% end %>
+
+          <% if current_buyer %>
+            <%= link_to 'My Bids', buyer_bids_path, class: 'dropdown-item' %>
+            <%= link_to 'Log Out', destroy_buyer_session_path, method: :delete, class: 'dropdown-item' %>
+          <% end %>
+
+          <% if current_seller %>
+            <%= link_to 'Log Out', destroy_seller_session_path, method: :delete, class: 'dropdown-item' %>
+          <% end %>
         </div>
       </li>
-
     </ul>
   </div>
 </nav>
