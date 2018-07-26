@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
     def devise_parameter_sanitizer
       if resource_class == Buyer
-        ParameterSanitizer.new(Buyer, :buyer, params)
+        Buyer::ParameterSanitizer.new(Buyer, :buyer, params)
       elsif resource_class == Seller
         Seller::ParameterSanitizer.new(Seller, :seller, params)
       else
