@@ -4,8 +4,9 @@
 <%= form_for @message, :local => true do |f| %>
     <%= f.text_area :content, size: "60x12" %>
     <%= f.hidden_field :sender, :value => 'true' %>
-    <%= f.hidden_field :seller_id, :value => @seller %>
-    <%= f.hidden_field :buyer_id, :value => @buyer %>
+    <%= f.hidden_field :buyer_id, :value => @buyer.id %>
+    <%= f.hidden_field :seller_id, :value => @seller.id %>
+    <br>
 
     <%= f.submit "Create" %>
 <% end %>
