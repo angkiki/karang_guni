@@ -1,0 +1,15 @@
+.container1{
+    width:50%;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+}
+.carousel_container{
+    position: absolute;
+    transform: translateX(50%)
+    
+}
+
+.seller_container{
+    position: absolute;
+}
