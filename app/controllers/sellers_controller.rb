@@ -10,6 +10,18 @@ class SellersController < ApplicationController
     @bids = @request.buyer_requests
   end
 
+  def accept_bid
+    @bid = BuyerRequest.find(params[:br_id])
+    @request = Request.find(params[:req_id])
+    @buyer = @bid.buyer
+
+    @bid.update(sold: true)
+    @request.update(status: true)
+
+    flash[:success] = "Successfully Accepted #{@buyer.name}'s Bid'"
+    redirect_to request_index_path
+  end
+
   private
     def only_seller
       unless current_seller
