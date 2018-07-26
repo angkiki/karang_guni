@@ -14,7 +14,7 @@
   <br />
 
   <div id="items-forms-holder">
-    <div>
+    <div id="ifsh-0">
       <%= f.fields_for :items, Item.new do |f| %>
         <%= render 'items_form', f: f %>
       <% end %>
@@ -38,7 +38,7 @@
     let counter = 1;
 
     $('#add-item-field').click( () => {
-      let itemsForm = $('#items-forms-holder').children().first().html();
+      let itemsForm = $('#items-forms-holder').children().first()[0].outerHTML;
       let inputs = $(itemsForm).find('input')
 
       for (let i = 0; i < inputs.length; i++) {
@@ -52,9 +52,19 @@
         itemsForm = itemsForm.replace(currentId, newId);
       }
 
+      itemsForm = itemsForm.replace('remove-0', 'remove-' + counter);
+      itemsForm = itemsForm.replace('ifsh-0', 'ifsh-' + counter);
+
       $(itemsForm).appendTo( $('#items-forms-holder') );
       counter += 1
     });
+
+    $(document).on('click', '.remove-item-line' ,function() {
+      let attrId = $(this).attr('id');
+      let itemNo = parseInt(attrId[attrId.length - 1]);
+
+      $('#ifsh-' + itemNo).remove();
+    })
 
   });
 </script>
