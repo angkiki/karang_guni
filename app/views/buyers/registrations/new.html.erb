@@ -1,21 +1,55 @@
-<div class='buyer container'>
+<div class='row'>
+  <div class='col-6 text-center'>
+    <%= image_tag "Karang_guni.jpeg", alt:"karang guni man", style:"height:100%; width:80%; object-fit: cover; object-position: -698px "%>
+  </div>
 
-  <h2 class="text-center">Buyer's Sign up</h2>
+  <div class='col-6'>
+    <h2 class="col-md-8 mr-auto text-center">Sign up me up!<br/> As a Buyer</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-    <div class="row">
-      <div class="col-md-6 ml-auto mr-auto">
-        <%= f.label :name %><br>
-        <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+      <div class="row">
+        <div class="col-md-8">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+        </div>
       </div>
-    </div>
 
-    <br />
+      <br />
 
-    <div class="row">
-      <div class="col-md-6 ml-auto mr-auto">
+      <div class="row">
+        <div class="col-md-8">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="col-md-8">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="col-md-8">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="row">
+      <div class="col-md-8">
         <%= f.label :hp %><br>
         <%= f.text_field :hp, placeholder: "Contact", class: "form-control"%>
       </div>
@@ -23,40 +57,12 @@
 
     <br />
 
-    <div class="row">
-      <div class="col-md-6 ml-auto mr-auto">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+      <div class="actions col-md-8 mr-auto text-center">
+        <%= f.submit "Sign up" %>
       </div>
-    </div>
+    <% end %>
 
-    <br />
-
-    <div class="row">
-      <div class="col-md-6 ml-auto mr-auto">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
-      </div>
-    </div>
-
-    <br />
-
-    <div class="row">
-      <div class="col-md-6 ml-auto mr-auto">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password", class: "form-control" %>
-      </div>
-    </div>
-
-    <br />
-
-    <div class="actions" align="center">
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
-
-  <%#= render "buyers/shared/links" %>
-<div>
+    <%#= render "buyers/shared/links" %>
+  </div>
+  
+</div>

@@ -1,15 +1,12 @@
-.container1{
-    width:50%;
-    height:100vh;
-    display: flex;
-    justify-content: center;
-}
-.carousel_container{
+
+.image_register{
     position: absolute;
-    transform: translateX(50%)
-    
+    display: inline-block;
+    height: 80%;
+    width: 50%;
 }
 
-.seller_container{
-    position: absolute;
+.image_register img {
+    width: 100%;
+    height: 100%
 }
