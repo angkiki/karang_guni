@@ -9,6 +9,17 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if current_seller %>
+        <li class="nav-item">Seller</li>
+      <% end %>
+      
+      <% if current_buyer %>
+        <li class="nav-item">Buyer</li>
+      <% end %>
+
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <% if current_seller %>
         <li class="nav-item">
           <%= link_to 'New Request', new_request_path, class: "nav-link" %>
         </li>
@@ -24,15 +35,13 @@
 
       <% if current_buyer %>
         <li class="nav-item">
-          <%= link_to 'Requests', requests_path, class: "nav-link" %>
+          <%= link_to 'All Requests', requests_path, class: "nav-link" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to 'My Messages', show_buyer_message_path, class: "nav-link" %>
         </li>
       <% end %>
-
-      <% unless current_buyer || current_seller %>
-      <% end %>
-    </ul>
-
-    <ul class="navbar-nav ml-auto">
 
       <% unless current_buyer || current_seller %>
         <li class="nav-item">
@@ -56,16 +65,18 @@
 
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <% unless current_buyer || current_seller %>
-            <%= link_to 'Buyer Sign Up', new_buyer_registration_path, class: 'dropdown-item' %>
-            <%= link_to 'Buyer Sign In', new_buyer_session_path, class: 'dropdown-item' %>
+            <%= link_to 'Login', new_buyer_session_path, class: 'dropdown-item' %>
+            <%= link_to 'Register', new_buyer_registration_path, class: 'dropdown-item' %>
           <% end %>
 
           <% if current_buyer %>
+            <%= link_to 'Dashboard', buyer_path(current_buyer.id), class: 'dropdown-item' %>
             <%= link_to 'My Bids', buyer_bids_path, class: 'dropdown-item' %>
             <%= link_to 'Log Out', destroy_buyer_session_path, method: :delete, class: 'dropdown-item' %>
           <% end %>
 
           <% if current_seller %>
+            <%= link_to 'Dashboard', seller_path(current_seller.id), class: 'dropdown-item' %>
             <%= link_to 'Log Out', destroy_seller_session_path, method: :delete, class: 'dropdown-item' %>
           <% end %>
         </div>

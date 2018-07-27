@@ -7,6 +7,7 @@
       <th>Bid Price</th>
       <th>Status</th>
       <th>Accepted</th>
+      <th>Message</th>
     </tr>
 
     <% @requests.each do |request| %>
@@ -15,6 +16,7 @@
         <td>$<%= request.buyer_requests.find_by(buyer_id: current_buyer.id).price %></td>
         <td><%= request.status ? "Closed" : "Open" %></td>
         <td><%= request.buyer_requests.find_by(buyer_id: current_buyer.id).sold ? "Yes" : "No" %></td>
+        <td><%= link_to 'New message', new_buyer_message_path(seller_id: request.seller.id), class: 'btn btn-success btn-md' %></td>
       </tr>
     <% end %>
   </table>

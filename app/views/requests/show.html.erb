@@ -23,7 +23,6 @@
 
   <% if current_buyer %>
     <div align="center">
-      <%= link_to 'New message', new_buyer_message_path(seller_id: @request.seller.id), class: 'btn btn-success btn-md' %>
       <%= link_to 'Bid', new_buyer_request_path(req_id: @request.id), class: 'btn btn-success btn-md' %>
     </div>
 

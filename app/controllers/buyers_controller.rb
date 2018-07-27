@@ -7,7 +7,7 @@ class BuyersController < ApplicationController
   end
 
   def bids
-    @requests = current_buyer.requests
+    @requests = current_buyer.requests.order('id DESC')
   end
 
   private
