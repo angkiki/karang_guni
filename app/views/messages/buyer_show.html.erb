@@ -4,7 +4,7 @@
       <h1 class="text-center">All of Buyer's message</h1><br>
       <% @sellers.each do |seller| %>
         <div class="messages">
-          <h4 class="text-center message-link"><%= seller.name %> >> </h4>
+          <h4 class="text-center message-link"><%= seller.name %>'s Chat</h4>
 
           <div class="message-holder">
             <% seller.messages.where(buyer_id: @buyer_id).each do |message| %>

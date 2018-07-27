@@ -1,0 +1,16 @@
+.home {
+    background-color: red;
+
+
+    .row {
+        height: 600px;
+        background-image: url('gardencity.jpg');
+        background-size: cover;
+        margin-top: -50px;
+        filter: grayscale(1);
+    }
+
+    .row-one {
+        margin: 0 auto;
+    }
+}
