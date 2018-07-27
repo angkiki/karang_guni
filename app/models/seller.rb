@@ -6,4 +6,14 @@ class Seller < ApplicationRecord
 
   has_many :requests
   has_many :messages
+
+  def self.notify_buyer_bid_accepted(request, buyer)
+    BuyerMailer.bid_accepted(request, buyer).deliver
+  end
+
+  def self.notify_buyers_bid_rejected(request, buyer_requests)
+    buyer_requests.each do |br|
+      BuyerMailer.request_closed(request, br.buyer).deliver
+    end
+  end
 end
