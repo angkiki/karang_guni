@@ -2,7 +2,11 @@ class RequestsController < ApplicationController
   before_action :only_sellers, only: [:new, :create]
 
   def index
-    @request = Request.includes(:items).where(status: false)
+    if params[:postal] != nil
+      @request = Request.near(params[:postal], 3).where(status: false)
+    else 
+      @request = Request.where(status: false)
+    end
   end
 
   def new
@@ -36,3 +40,11 @@ class RequestsController < ApplicationController
       end
     end
 end
+
+
+# Seller 
+# Seller.all => SELECTS ALL 
+# Seller.find => FIND BY SPECIFIC ID 
+# Seller.find_by => FIND BY A SPECIFIC ATTRIBUTE => gives you the FIRST bryan 
+# Seller.where => Seller.where(name: 'bryan') => gives you ALL THE BRYANs
+
