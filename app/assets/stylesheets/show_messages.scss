@@ -1,0 +1,18 @@
+.messages {
+    width: 600px;
+}
+
+.message {
+    width: 75%;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.message-holder {
+    display: none;
+    background-color: #eeeeee;
+}
+
+.message-link {
+    cursor: pointer;
+}

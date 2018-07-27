@@ -1,25 +1,46 @@
 <div class="container">
-  <h1 class="text-center">All of Buyer's message</h1>
+  <div class="row">
+    <div class="mr-auto ml-auto">
+      <h1 class="text-center">All of Buyer's message</h1><br>
+      <% @sellers.each do |seller| %>
+        <div class="messages">
+          <h4 class="text-center message-link"><%= seller.name %> >> </h4>
 
-  <br />
-
-  <% @sellers.each do |seller| %>
-    <h3 class="text-center">Convo With: <%= seller.name %></h3>
-
-    <% seller.messages.where(buyer_id: @buyer_id).each do |message| %>
-      <p class="message text-center <%= message.sender %>">
-        <%= message.content %>
-      </p>
-    <% end %>
-
-    <p class="text-center">
-      <%= link_to 'Reply', new_buyer_message_path(seller) %>
-    </p>
-  <% end %>
+          <div class="message-holder">
+            <% seller.messages.where(buyer_id: @buyer_id).each do |message| %>
+              <p class="message <%= message.sender %>">
+                <%= message.content %>
+              </p>
+            <% end %> 
+            
+            <p class="text-center">
+              <%= link_to 'Reply', new_buyer_message_path(seller) %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <style media="screen">
+
+  .true {
+    border: 1px solid #A5A5A5;
+    text-align: left;
+  }
+
   .false {
-    background-color: grey;
+    background-color: #A5A5A5;
+    text-align: right;
+    margin-left: auto;
   }
 </style>
+
+<script type="text/javascript">
+  $(document).ready( () => {
+    $('.message-link').click( function() {
+      $(this).siblings('.message-holder').slideToggle(500);
+    })
+  })
+</script>
