@@ -1,16 +1,16 @@
 <div class="row">
   <div class='col-6 text-center'>
-    <%= image_tag "Karang_guni.jpeg", alt:"karang guni man", style:"height:100%; width:80%; object-fit: cover; object-position: -698px "%>
+    <%= image_tag "news_paper.jpeg", alt:"news paper", style:"height:100%; width:80%; object-fit: cover; "%>
     </div>
 
       <div class='col-6'>
-        <h2 class="col-md-4 ml-auto text-center">Sign up me up!<br/> As a Seller</h2>
+        <h2 class="col-md-8 mr-auto text-center">Sign up me up!<br/> As a Seller</h2>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
 
           <div class="row">
-            <div class="col-md-4 ml-auto">
+            <div class="col-md-8">
               <%= f.label :name %><br />
               <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: "Name", class: "form-control" %>
             </div>
@@ -18,7 +18,7 @@
 
           <br />
           <div class="row">
-            <div class="col-md-4 ml-auto">
+            <div class="col-md-8">
               <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
             </div>
@@ -27,7 +27,7 @@
           <br />
 
           <div class="row">
-            <div class="col-md-4 ml-auto">
+            <div class="col-md-8">
               <%= f.label :password %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -39,7 +39,7 @@
           <br />
 
           <div class="row">
-            <div class="col-md-4 ml-auto">
+            <div class="col-md-8">
               <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control" %>
             </div>
@@ -48,7 +48,7 @@
           <br />
 
           <div class="row">
-            <div class="col-md-4 ml-auto">
+            <div class="col-md-8">
               <%= f.label :Contact %><br />
               <%= f.text_field :hp, autofocus: true, autocomplete: "off", placeholder: "Phone number",class: "form-control" %>
             </div>
@@ -57,7 +57,7 @@
           <br />
 
           <div class="row">
-            <div class="col-md-4 ml-auto">
+            <div class="col-md-8">
               <%= f.label :address %><br />
               <%= f.text_field :address, autofocus: true, autocomplete: "off", placeholder: "Address", class: "form-control" %>
             </div>
@@ -65,7 +65,7 @@
 
           <br />
 
-          <div class="actions col-md-4 ml-auto text-center ">
+          <div class="actions col-md-8 text-center ">
             <%= f.submit "Sign up" %>
           </div>
         <% end %>
