@@ -1,107 +1,77 @@
-<div class='seller_container col-md-10'>
-
-  <h2 class="col-md-4 ml-auto text-center">Sign up me up!<br/> As a Seller</h2>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-
-    <div class="row">
-      <div class="col-md-4 ml-auto">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: "Name", class: "form-control" %>
-      </div>
+<div class="row">
+  <div class='col-6 text-center'>
+    <%= image_tag "Karang_guni.jpeg", alt:"karang guni man", style:"height:100%; width:80%; object-fit: cover; object-position: -698px "%>
     </div>
 
-    <br />
-    <div class="row">
-      <div class="col-md-4 ml-auto">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+      <div class='col-6'>
+        <h2 class="col-md-4 ml-auto text-center">Sign up me up!<br/> As a Seller</h2>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="row">
+            <div class="col-md-4 ml-auto">
+              <%= f.label :name %><br />
+              <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: "Name", class: "form-control" %>
+            </div>
+          </div>
+
+          <br />
+          <div class="row">
+            <div class="col-md-4 ml-auto">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+            </div>
+          </div>
+
+          <br />
+
+          <div class="row">
+            <div class="col-md-4 ml-auto">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+            </div>
+          </div>
+
+          <br />
+
+          <div class="row">
+            <div class="col-md-4 ml-auto">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control" %>
+            </div>
+          </div>
+
+          <br />
+
+          <div class="row">
+            <div class="col-md-4 ml-auto">
+              <%= f.label :Contact %><br />
+              <%= f.text_field :hp, autofocus: true, autocomplete: "off", placeholder: "Phone number",class: "form-control" %>
+            </div>
+          </div>
+
+          <br />
+
+          <div class="row">
+            <div class="col-md-4 ml-auto">
+              <%= f.label :address %><br />
+              <%= f.text_field :address, autofocus: true, autocomplete: "off", placeholder: "Address", class: "form-control" %>
+            </div>
+          </div>
+
+          <br />
+
+          <div class="actions col-md-4 ml-auto text-center ">
+            <%= f.submit "Sign up" %>
+          </div>
+        <% end %>
+
+        <%#= render "sellers/shared/links" %>
       </div>
     </div>
-
-    <br />
-
-    <div class="row">
-      <div class="col-md-4 ml-auto">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
-      </div>
-    </div>
-
-    <br />
-
-    <div class="row">
-      <div class="col-md-4 ml-auto">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control" %>
-      </div>
-    </div>
-
-    <br />
-
-    <div class="row">
-      <div class="col-md-4 ml-auto">
-        <%= f.label :Contact %><br />
-        <%= f.text_field :hp, autofocus: true, autocomplete: "off", placeholder: "Phone number",class: "form-control" %>
-      </div>
-    </div>
-
-    <br />
-
-    <div class="row">
-      <div class="col-md-4 ml-auto">
-        <%= f.label :address %><br />
-        <%= f.text_field :address, autofocus: true, autocomplete: "off", placeholder: "Address", class: "form-control" %>
-      </div>
-    </div>
-
-    <br />
-
-    <div class="actions col-md-4 ml-auto text-center ">
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
-
-  <%#= render "sellers/shared/links" %>
-</div>
-
-<div class="container1">
-<div class="carousel_container">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    
-    <div class="carousel-inner">
-      <div class="item active">
-        <%= image_tag "rubbish_truck.jpeg", alt:"Rubbish truck", style:"width: 50%;" %>
-      </div>
-
-      <div class="item">
-        <%= image_tag "recycleables.jpeg", alt:"Recycleables", style:"width: 50%;" %>
-      </div>
-    
-      <div class="item">
-        <%= image_tag "rubbish_cans.jpeg", alt:"Rubbish cans", style:"width: 50%;" %>
-      </div>
-    </div>
-
-
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
   </div>
-</div>
 </div>
