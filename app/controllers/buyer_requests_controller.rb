@@ -13,6 +13,9 @@ class BuyerRequestsController < ApplicationController
     if @buyer_request.save
       flash[:success] = "Successfully Submitted Bid!"
       redirect_to buyer_bids_path
+
+      @seller = Request.find(buyer_request_params[:request_id]).seller
+      SellerMailer.new_bid(@buyer_request, @seller).deliver
     else
       flash[:danger] = @buyer_request.errors.messages
       redirect_to new_buyer_request_path(req_id: params[:req_id])

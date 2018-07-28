@@ -18,6 +18,11 @@ class SellersController < ApplicationController
     @bid.update(sold: true)
     @request.update(status: true)
 
+    @rejected_buyers = @request.buyer_requests.select { |br| !br.sold }
+
+    Seller.notify_buyer_bid_accepted(@request, @buyer)
+    Seller.notify_buyers_bid_rejected(@request, @rejected_buyers)
+
     flash[:success] = "Successfully Accepted #{@buyer.name}'s Bid'"
     redirect_to request_index_path
   end

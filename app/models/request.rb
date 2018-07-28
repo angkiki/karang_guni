@@ -7,7 +7,7 @@ class Request < ApplicationRecord
 
   has_many :buyer_requests
   has_many :buyers, through: :buyer_requests
-
+  
   after_create :add_lat_and_lon
   geocoded_by :lat_and_lon
 
@@ -18,5 +18,11 @@ class Request < ApplicationRecord
   def add_lat_and_lon
     @seller = self.seller
     self.update_attributes(latitude: @seller.latitude, longitude: @seller.longitude)
+
+  def self.inform_all_buyers_of_new_request
+    @buyers = Buyer.all
+    @buyers.each do |buyer|
+      BuyerMailer.new_request(buyer).deliver
+    end
   end
 end

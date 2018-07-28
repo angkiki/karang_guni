@@ -18,6 +18,8 @@ class RequestsController < ApplicationController
     if @request.save
       flash[:success] = "Successfully Saved Requests"
       redirect_to request_index_path
+
+      Request.inform_all_buyers_of_new_request
     else
       flash[:danger] = @request.errors.messages
       render :new

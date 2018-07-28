@@ -20,8 +20,12 @@ class MessagesController < ApplicationController
 
     if current_buyer
       redirect_to show_buyer_message_path
+      @seller = Seller.find(message_params[:seller_id])
+      Message.new_message_from_seller(current_buyer, @seller, @message)
     else
       redirect_to show_seller_message_path
+      @buyer = Buyer.find(message_params[:buyer_id])
+      Message.new_message_from_seller(@buyer, current_seller, @message)
     end
   end
 

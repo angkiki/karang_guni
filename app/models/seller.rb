@@ -15,4 +15,13 @@ class Seller < ApplicationRecord
   geocoded_by :postal_and_country   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
 
+  def self.notify_buyer_bid_accepted(request, buyer)
+    BuyerMailer.bid_accepted(request, buyer).deliver
+  end
+
+  def self.notify_buyers_bid_rejected(request, buyer_requests)
+    buyer_requests.each do |br|
+      BuyerMailer.request_closed(request, br.buyer).deliver
+    end
+  end
 end
