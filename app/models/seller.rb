@@ -7,6 +7,14 @@ class Seller < ApplicationRecord
   has_many :requests
   has_many :messages
 
+  #postal gives you back the postal code
+  def postal_and_country
+    "postal_code: '#{postal}', country: 'SG'"
+  end
+
+  geocoded_by :postal_and_country   # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
+
   def self.notify_buyer_bid_accepted(request, buyer)
     BuyerMailer.bid_accepted(request, buyer).deliver
   end

@@ -65,6 +65,15 @@
 
           <br />
 
+          <div class="row">
+          <div class="col-md-8">
+            <%= f.label :postal %><br />
+            <%= f.text_field :postal, autofocus: true, autocomplete: "off", placeholder: "Postal", class: "form-control" %>
+          </div>
+        </div>
+
+        <br />
+
           <div class="actions col-md-8 text-center ">
             <%= f.submit "Sign up" %>
           </div>
