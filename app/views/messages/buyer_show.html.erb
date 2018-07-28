@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="mr-auto ml-auto">
-      <h1 class="text-center">All of Buyer's message</h1><br>
       <% @sellers.each do |seller| %>
         <div class="messages">
-          <h4 class="text-center message-link"><%= seller.name %>'s Chat</h4>
+          <div class="message-link"><%= seller.name %>'s Chat</div>
 
           <div class="message-holder">
             <% seller.messages.where(buyer_id: @buyer_id).each do |message| %>
@@ -40,7 +39,9 @@
 <script type="text/javascript">
   $(document).ready( () => {
     $('.message-link').click( function() {
-      $(this).siblings('.message-holder').slideToggle(500);
+      let clicky = $(this).siblings('.message-holder');
+      clicky.slideToggle(100);
+      $('.message-holder').not(clicky).hide();
     })
   })
 </script>
