@@ -18,6 +18,7 @@ class Request < ApplicationRecord
   def add_lat_and_lon
     @seller = self.seller
     self.update_attributes(latitude: @seller.latitude, longitude: @seller.longitude)
+  end
 
   def self.inform_all_buyers_of_new_request
     @buyers = Buyer.all
