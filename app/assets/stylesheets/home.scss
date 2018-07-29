@@ -1,16 +1,22 @@
-.home {
-    background-color: red;
+$primary-color: #57BDB5;
 
+.home {
+    padding: 0px;
 
     .row {
+        margin-right: 0px;
+        margin-left: 0px;
+        width: 100%;
         height: 600px;
         background-image: url('gardencity.jpg');
         background-size: cover;
         margin-top: -50px;
-        filter: grayscale(1);
     }
 
     .row-one {
         margin: 0 auto;
+        line-height: 400px;
+        font-size: 30px;
+        color: $primary-color;
     }
 }
