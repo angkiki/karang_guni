@@ -48,10 +48,41 @@ $primary-color: rgba(81, 190, 181, 1);
     color: black;
     padding: 10px 40px;
     background-color: #DDDDDD;
-    border-radius: 5px
+    border-radius: 5px;
 }
 
 .reply-link:hover {
     text-decoration: none;
     color: #57BDB5;
+}
+
+// // // // //
+// REPLY 
+// // // // //
+
+.reply-field {
+    margin: 0 auto;
+    width: 600px;
+}
+
+.reply-textarea {
+    height: 230px;
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px 15px;
+}
+
+.reply-send {
+    cursor: pointer;
+    background-color: #57BDB5;
+    border: 0px;
+    padding: 8px 35px;
+    font-size: 13px;
+    border-radius: 5px;
+    float: right;
+    color: white;
+}
+
+.reply-send:hover {
+    color: black;
 }
