@@ -1,20 +1,57 @@
+$primary-color: rgba(81, 190, 181, 1);
+
+.messages-all {
+    position: relative;
+    width: 800px;
+    margin-top: 20px;
+}
+
 .messages {
-    width: 600px;
+    top: 0px;
 }
 
 .message {
     width: 75%;
     padding: 20px;
     border-radius: 5px;
-}
-
-.message-holder {
-    display: none;
-    background-color: #eeeeee;
+    margin-bottom: 23px;
 }
 
 .message-link {
     cursor: pointer;
-    background-color: red;
-    width: 200px;
+    padding: 10px 0px 10px 20px;
+    width: 23%;
+    border: 1px solid #57BDB5;
+    margin-top: -1px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+}
+
+.message-holder {
+    display: none;
+    float: right;
+    width: 67%;
+    vertical-align: top;
+    position:absolute;
+    right:0px;
+    top:0px;
+    margin-bottom: 80px;
+    font-size: 14px;
+}
+
+.reply-btn {
+    margin-top: 55px;
+}
+
+.reply-link {
+    color: black;
+    padding: 10px 40px;
+    background-color: #DDDDDD;
+    border-radius: 5px
+}
+
+.reply-link:hover {
+    text-decoration: none;
+    color: #57BDB5;
 }

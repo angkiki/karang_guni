@@ -1,5 +1,6 @@
+$primary-color: #57BDB5;
+
 .home {
-    background-color: red;
     padding: 0px;
 
     .row {
@@ -16,6 +17,6 @@
         margin: 0 auto;
         line-height: 400px;
         font-size: 30px;
-        color: #57BDB5;
+        color: $primary-color;
     }
 }

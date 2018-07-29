@@ -9,14 +9,16 @@
   </head>
 
   <body>
-    <div class="wrapper">
-      <div class="wrapper-inside">
-        <%= render 'layouts/nav' %>
-        <%= render 'shared/alerts' %>
+      <%= render 'layouts/nav' %>
+      <%= render 'shared/alerts' %>
+      <div class="wrapper">
         <%= yield %>
       </div>
-    </div>
-
-    <footer class="footer">Made By 'The Powerhouses'</footer>
   </body>
+  <%# <footer class="footer">Made By 'The Powerhouses'</footer> %>
 </html>
+
+
+
+
+<%# commented out stuff for footer %>

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="mr-auto ml-auto">
+    <div class="messages-all mr-auto ml-auto">
       <% @sellers.each do |seller| %>
         <div class="messages">
-          <div class="message-link"><%= seller.name %>'s Chat</div>
+          <div class="message-link"><%= seller.name %></div>
 
           <div class="message-holder">
             <% seller.messages.where(buyer_id: @buyer_id).each do |message| %>
@@ -11,11 +11,12 @@
                 <%= message.content %>
               </p>
             <% end %> 
-            
-            <p class="text-center">
-              <%= link_to 'Reply', new_buyer_message_path(seller) %>
+
+            <p class="text-center reply-btn">
+              <%= link_to 'Reply', new_buyer_message_path(seller), class: 'reply-link' %>
             </p>
           </div>
+
         </div>
       <% end %>
     </div>
@@ -25,12 +26,13 @@
 <style media="screen">
 
   .true {
-    border: 1px solid #A5A5A5;
+    background-color: rgba(81, 190, 181, 1);
+    border: 1px solid #57BDB5;
     text-align: left;
   }
 
   .false {
-    background-color: #A5A5A5;
+    border: 1px solid #57BDB5;
     text-align: right;
     margin-left: auto;
   }
@@ -38,9 +40,14 @@
 
 <script type="text/javascript">
   $(document).ready( () => {
+    $('.message-holder').hide();
+    $('.message-link').css('background-color', 'rgba(255, 255, 255, 0)');
+    
     $('.message-link').click( function() {
+      $('.message-link').css('background-color', 'rgba(255, 255, 255, 0)');
       let clicky = $(this).siblings('.message-holder');
-      clicky.slideToggle(100);
+      clicky.show();
+      $(this).css('background-color', 'rgba(81, 190, 181, 0.2)');
       $('.message-holder').not(clicky).hide();
     })
   })
