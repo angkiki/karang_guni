@@ -1,13 +1,57 @@
-<div class='text-center'>
-    <h1>Seller's account</h1>
+<div class='row profile'>
+    <div class='right mr-auto'>
+        <%= current_seller.name %><br>
+        <%= current_seller.email %><br>
+        You have <%= current_seller.requests.where(status: false).size %> open request<br>
+        <%= link_to 'Messages', show_seller_message_path %><br><br><br><br>
+        <%= link_to 'Edit Profile', edit_seller_registration_path%><br>
+        <%= link_to 'Log Out', destroy_seller_session_path, method: :delete %><br />
+    </div>
 
-    <% if current_seller %>
-        <%= current_seller.name %><br/>
-        <%= current_seller.email %>  
-    <% end %><br>
-    <%= link_to 'Log Out', destroy_seller_session_path, method: :delete %><br />
-    <%= link_to 'Edit Profile', edit_seller_registration_path%>
+    <div class='left ml-auto'>
+        <h4>Open Requests</h4>
+            <table class="table table-striped">
+                <tr>
+                <th>Title</th>
+                <th>Bid Count</th>
+                <th>View</th>
+                </tr>
 
-    <br>
-<%= link_to 'Messages', show_seller_message_path %>
+                <% current_seller.requests.where(status: false).each do |r| %>
+                <tr>
+                    <td><%= link_to r.title, request_path(r.id) %></td>
+                    <td><%= r.buyer_requests.count %></td>
+                    <td>
+                    <% if r.status %>
+                        Closed
+                    <% else %>
+                        <%= link_to 'View Bids', request_bids_path(req_id: r.id), class: 'btn btn-xs btn-success' %>
+                    <% end %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+
+        <h4>Closed Requests</h4>
+            <table class="table table-striped">
+                <tr>
+                <th>Title</th>
+                <th>Accepted Price</th>
+                </tr>
+
+                <% current_seller.requests.where(status: true).each do |r| %>
+                <tr>
+                    <% r.buyer_requests.where(sold: true).each do |bid| %>
+                      <td><%= r.title %></td>
+                      <td><%= bid.price %></td>
+                    <% end %>
+                </tr>
+                <% end %>
+            </table>
+
+    </div>
 </div>
+
+
+
+  <%# current_seller.requests[0].buyer_requests[0].price %>
