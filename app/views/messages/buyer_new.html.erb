@@ -1,5 +1,5 @@
 <div class='reply-field'>
-<h5>Replying to <%= @seller.name %></h5>
+<h5>Messaging <%= @seller.name %></h5>
 
 <%= form_for @message, :local => true do |f| %>
     <%= f.text_area :content, class: 'reply-textarea' %>

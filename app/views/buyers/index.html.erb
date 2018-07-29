@@ -29,12 +29,14 @@
                 <tr>
                 <th>Title of Bid</th>
                 <th>Accepted</th>
+                <th>Accepted Price</th>
                 </tr>
 
                 <% current_buyer.requests.where(status: true).each do |request| %>
                 <tr>
                     <td><%= request.title %></td>
                     <td><%= request.buyer_requests.find_by(buyer_id: current_buyer.id).sold ? "Yes" : "No" %></td>
+                    <td><%= request.buyer_requests.find_by(buyer_id: current_buyer.id).price %></td>
                 </tr>
                 <% end %>
             </table>
