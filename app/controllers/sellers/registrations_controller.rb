@@ -65,6 +65,9 @@ class Seller::ParameterSanitizer < Devise::ParameterSanitizer
   def initialize(*)
     super
     permit(:sign_up, keys: [:name, :address, :hp, :postal])
+    permit(:account_update, keys: [:name, :address, :hp, :postal])
+
+    
   end
 
 end
