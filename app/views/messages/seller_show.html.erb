@@ -14,6 +14,7 @@
           <% m_a.each do |m| %>
             <div class="message <%= m.sender %> b-id-<%= m.buyer_id %>">
               <%= m.content %>
+              <div class="message-time"><%= m.created_at.strftime("%Y-%m-%d %H:%M") %></div>
             </div>
           <% end %>
           <br />

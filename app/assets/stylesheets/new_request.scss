@@ -1,5 +1,8 @@
 .new-item-title {
     margin-top: 20px;
+    background-color: rgba(87, 189, 181, 0.3);
+    padding: 20px 15px;
+    border-radius: 10px;
 
     h6 {
         font-weight: 900;
@@ -14,7 +17,7 @@
     background-color: #DDDDDD;
     height: fit-content;
     width: 50%;
-    margin: 20px auto;
+    margin: 10px auto 20px auto;
     border-radius: 15px;
 
     label {
@@ -57,4 +60,9 @@
     border: 1px solid #57BDB5;
     color: black;
     margin: 0 5px;
+}
+
+
+.row {
+    margin: 0px;
 }
