@@ -5,13 +5,12 @@
     <%= devise_error_messages! %>
     
     <div class="field">
-      <%= f.label :Profile_Picture %><br />
-      <%= f.file_field :avatar %><br />
       <% if current_buyer.avatar.url.present? %>
         <%= image_tag(current_buyer.avatar.url) %><br />
-        <%= f.label :remove_avatar %>
+        <%= f.label :remove? %>
         <%= f.check_box :remove_avatar %>
-      <% end %>
+      <% end %><br />
+      <%= f.file_field :avatar%>
     </div>
 
     <div class="field">

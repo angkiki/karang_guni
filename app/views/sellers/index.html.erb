@@ -1,7 +1,21 @@
 <div class='row profile'>
-    <div class='right mr-auto'>
+
+    <div class='right mr-auto text-center'>
+    
+    <% if @seller.avatar.present? %>
+        <div>
+        <%= image_tag(@seller.avatar.url, :size => "120x120", class: "img-circle") %>
+        </div><br/>
+    <% else %>
+        <div>
+        <%= image_tag('profile_default.png', :size => "120x120", class: "img-circle") %>
+        </div><br/>
+    <% end %>
+
+    <% if current_seller %>
         <%= current_seller.name %><br>
         <%= current_seller.email %><br>
+    <% end %>
         You have <%= current_seller.requests.where(status: false).size %> open request<br>
         <%= link_to 'Messages', show_seller_message_path %><br><br><br><br>
         <%= link_to 'Edit Profile', edit_seller_registration_path%><br>

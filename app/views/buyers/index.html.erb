@@ -1,22 +1,19 @@
-
-<div class='text-center'>
-    <h1>Buyer's account</h1>
-    
-    <% if @buyer.avatar.present? %>
-        <%= image_tag @buyer.avatar.url %><br />
-    <% else %>
-        <%= image_tag 'profile_default.png' %><br />
-    <% end %>
-
-    <% if current_buyer %>
-        <%= current_buyer.name %> <br/>
-        <%= current_buyer.email %>
-    <% end %><br>
-
 <div class='row profile'>
-    <div class='right mr-auto'>
+
+    <div class='right mr-auto text-center'>
+    <% if @buyer.avatar.present? %>
+        <div>
+        <%= image_tag(@buyer.avatar.url, :size => "120x120", class: "img-circle") %>
+        </div><br/>
+    <% else %>
+        <div>
+        <%= image_tag('profile_default.png', :size => "120x120", class: "img-circle") %>
+        </div><br/>
+    <% end %>
+    <% if current_buyer %>
         <%= current_buyer.name %><br>
         <%= current_buyer.email %><br>
+    <% end %>
         You have <%= current_buyer.requests.where(status: false).size %> pending bids<br>
         <%= link_to 'Messages', show_buyer_message_path %><br><br><br><br>
         <%= link_to 'Edit Profile', edit_buyer_registration_path%><br>
@@ -55,8 +52,6 @@
                 <% end %>
             </table>
     </div>
-</div>
-    <%= link_to 'Log Out', destroy_buyer_session_path, method: :delete %><br>
-  
+</div>  
 
 </div>

@@ -1,6 +1,10 @@
 class SellersController < ApplicationController
   before_action :only_seller
 
+  def index 
+    @seller = current_seller
+  end
+
   def request_index
     @requests = current_seller.requests
   end
