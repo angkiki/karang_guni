@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-3 offset-1">
       <% @sellers_messages.first.each do |buyer| %>
         <div class="message-link" id="m-no-<%= buyer.id %>">
           <%= buyer.name %>
@@ -8,7 +8,7 @@
       <% end %>
     </div>
 
-    <div class="col-9">
+    <div class="col-7">
       <% @sellers_messages.last.each do |m_a| %>
         <div class="message-holder" id="mh-no-<%= m_a.first.buyer_id %>">
           <% m_a.each do |m| %>
@@ -41,16 +41,15 @@
 <script type="text/javascript">
   $(document).ready( () => {
     $('.message-link').click( function() {
+      $('.message-link').removeClass('message-link-clicked');
+      $('.message-holder').hide()
+
       let thisFullID = $(this).attr('id');
       let thisID = thisFullID[thisFullID.length - 1];
 
-      $('#mh-no-' + thisID).toggle();
+      $('#mh-no-' + thisID).show();
+      $(this).addClass('message-link-clicked');
 
-      if ( $(this).hasClass('message-link-clicked') ) {
-        $(this).removeClass('message-link-clicked');
-      } else {
-        $(this).addClass('message-link-clicked');
-      }
     })
   })
 </script>
