@@ -7,6 +7,9 @@ class Seller < ApplicationRecord
   has_many :requests
   has_many :messages
 
+  # Image uploading
+  mount_uploader :avatar, AvatarUploader
+
   #postal gives you back the postal code
   def postal_and_country
     "postal_code: '#{postal}', country: 'SG'"
@@ -23,5 +26,14 @@ class Seller < ApplicationRecord
     buyer_requests.each do |br|
       BuyerMailer.request_closed(request, br.buyer).deliver
     end
+  end
+
+  def get_sellers_messages
+    @s_id = self.id
+    @buyers = self.messages.map { |m| m.buyer }.uniq
+    @messages = @buyers.map do |buyer|
+      buyer.messages.where(seller_id: @s_id)
+    end
+    [@buyers, @messages]
   end
 end

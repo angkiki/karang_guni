@@ -1,22 +1,22 @@
 <div class="container">
-  <div>
-    <div class="messages-all">
-      <% @sellers.each do |seller| %>
-        <div class="row messages">
-          <div class="message-link col-3"><%= seller.name %></div>
+  <div class="row">
+    <div class="col-3">
+      <% @buyers_messages.first.each do |seller| %>
+        <div class="message-link" id="m-no-<%= seller.id %>">
+          <%= seller.name %>
+        </div>
+      <% end %>
+    </div>
 
-          <div class="message-holder col-9">
-            <% seller.messages.where(buyer_id: @buyer_id).each do |message| %>
-              <p class="message <%= message.sender %>">
-                <%= message.content %>
-              </p>
-            <% end %> 
-
-            <p class="text-center reply-btn">
-              <%= link_to 'Reply', new_buyer_message_path(seller), class: 'reply-link' %>
-            </p>
-          </div>
-
+    <div class="col-9">
+      <% @buyers_messages.last.each do |m_a| %>
+        <div class="message-holder" id="mh-no-<%= m_a.first.seller_id %>">
+          <% m_a.each do |m| %>
+            <div class="message <%= m.sender %> b-id-<%= m.seller_id %>">
+              <%= m.content %>
+            </div>
+          <% end %>
+          <br />
         </div>
       <% end %>
     </div>
@@ -42,7 +42,7 @@
   $(document).ready( () => {
     $('.message-holder').hide();
     $('.message-link').css('background-color', 'rgba(255, 255, 255, 0)');
-    
+
     $('.message-link').click( function() {
       $('.message-link').css('background-color', 'rgba(255, 255, 255, 0)');
       let clicky = $(this).siblings('.message-holder');
