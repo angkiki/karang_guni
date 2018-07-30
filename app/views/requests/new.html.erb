@@ -5,16 +5,18 @@
   <%= f.hidden_field :seller_id, value: current_seller.id %>
 
   <div class='row'>
-    <div class='col-md-6 ml-auto mr-auto'>
-      <%= f.label :title, class: "form-group" %>
-      <%= f.text_field :title, class: "form-control", placeholder: "Enter A Title For Your Request" %>
+    <div class='col-md-6 ml-auto mr-auto new-item-title'>
+    <div class='row'>
+      <%= f.label :title, 'Title:', class: "form-group col-1 col-form-label" %>
+      <div class='col-11'><%= f.text_field :title, class: "form-control", placeholder: "Title For Your Request" %></div>
+    </div>
     </div>
   </div>
 
   <br />
 
-  <div id="items-forms-holder">
-    <div id="ifsh-0">
+  <div id="items-forms-holder" class="new-item">
+    <div id="ifsh-0" class="one-new-item">
       <%= f.fields_for :items, Item.new do |f| %>
         <%= render 'items_form', f: f %>
       <% end %>
@@ -22,13 +24,8 @@
   </div>
 
   <div align="center">
-    <button type="button" id="add-item-field" class="btn btn-md btn-primary">Add Item</button>
-  </div>
-
-  <br />
-
-  <div align="center">
-    <%= f.submit 'Submit', class: "btn btn-md btn-success" %>
+    <button type="button" id="add-item-field" class="btn btn-md btn-primary add-btn">Add Item</button>
+    <%= f.submit 'Submit', class: "btn btn-md btn-success submit-btn" %>
   </div>
 
 <% end %>
