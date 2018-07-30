@@ -1,0 +1,29 @@
+.new-item-title {
+    padding: 20px 30px;
+    border-radius: 15px;
+
+    .form-group {
+    }
+
+    .form-control {
+        border: 3px solid #57BDB5;
+        background-color: #57BDB5;
+    }
+}
+
+.new-item {
+    background-color: #AEAEAE;
+    height: fit-content;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+.one-new-item {
+    padding: 40px 40px 30px 40px;
+    border-bottom: 1px solid #666666;
+}
+
+.one-new-item:last-child {
+    border-bottom: 0px solid black;
+}

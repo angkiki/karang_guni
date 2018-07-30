@@ -5,16 +5,16 @@
   <%= f.hidden_field :seller_id, value: current_seller.id %>
 
   <div class='row'>
-    <div class='col-md-6 ml-auto mr-auto'>
+    <div class='col-md-6 ml-auto mr-auto new-item-title'>
       <%= f.label :title, class: "form-group" %>
-      <%= f.text_field :title, class: "form-control", placeholder: "Enter A Title For Your Request" %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Title For Your Request" %>
     </div>
   </div>
 
   <br />
 
-  <div id="items-forms-holder">
-    <div id="ifsh-0">
+  <div id="items-forms-holder" class="new-item">
+    <div id="ifsh-0" class="one-new-item">
       <%= f.fields_for :items, Item.new do |f| %>
         <%= render 'items_form', f: f %>
       <% end %>
@@ -23,11 +23,6 @@
 
   <div align="center">
     <button type="button" id="add-item-field" class="btn btn-md btn-primary">Add Item</button>
-  </div>
-
-  <br />
-
-  <div align="center">
     <%= f.submit 'Submit', class: "btn btn-md btn-success" %>
   </div>
 
