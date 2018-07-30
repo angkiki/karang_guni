@@ -3,8 +3,8 @@ class RequestsController < ApplicationController
 
   def index
     if params[:postal] != nil
-      @request = Request.near(params[:postal], 10, units: :km).where(status: false)
-    else 
+      @request = Request.get_nearby_requests(params[:postal])
+    else
       @request = Request.where(status: false)
     end
   end
@@ -44,9 +44,8 @@ class RequestsController < ApplicationController
 end
 
 
-# Seller 
-# Seller.all => SELECTS ALL 
-# Seller.find => FIND BY SPECIFIC ID 
-# Seller.find_by => FIND BY A SPECIFIC ATTRIBUTE => gives you the FIRST bryan 
+# Seller
+# Seller.all => SELECTS ALL
+# Seller.find => FIND BY SPECIFIC ID
+# Seller.find_by => FIND BY A SPECIFIC ATTRIBUTE => gives you the FIRST bryan
 # Seller.where => Seller.where(name: 'bryan') => gives you ALL THE BRYANs
-
