@@ -4,6 +4,9 @@ class Seller < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  include ApplicationHelper
+  validate :valid_postal_code
+
   has_many :requests
   has_many :messages
 
@@ -12,7 +15,7 @@ class Seller < ApplicationRecord
 
   #postal gives you back the postal code
   def postal_and_country
-    "postal_code: '#{postal}', country: 'SG'"
+    "postal_code: #{postal}, country: 'SG'"
   end
 
   geocoded_by :postal_and_country   # can also be an IP address
@@ -36,14 +39,19 @@ class Seller < ApplicationRecord
     end
     [@buyers, @messages]
   end
+
   # Ensuring no size greater then 500KB to be uploader
-  
   validates_processing_of :avatar
   validate :avatar_size_validation
-    
+
   private
-    
-  def avatar_size_validation
-    errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes
-  end
+    def avatar_size_validation
+      errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes
+    end
+
+    def valid_postal_code
+      unless integer_check(postal) && postal.length == 6
+        errors.add(:postal, "Invalid Postal Code")
+      end
+    end
 end
