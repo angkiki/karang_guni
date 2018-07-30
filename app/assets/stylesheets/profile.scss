@@ -25,10 +25,61 @@
     border-radius: 50%;
 }
 
-.size{
-    width: 60%;
-}
-.border{
-    border: solid black;
-    object-fit: cover;
+// .size{
+//     width: 60%;
+// }
+// .border{
+//     border: solid black;
+//     object-fit: cover;
+// }
+
+.edit {
+
+    h2 {
+        font-size: 16px;
+    }
+
+    h5 {
+        margin-bottom: 15px;
+        color: #57BDB5;
+    }
+
+    .form-group {
+        line-height: 40px;
+        margin: 0px;
+    }
+
+    .form-control {
+        margin-bottom: 15px;
+    }
+
+    .edit-section {
+        margin: 40px auto;
+    }
+
+
+
+
+    .update-btn {
+        background-color: #57BDB5;
+        color: black;
+        border: 0px;
+        margin: 0 auto;
+    }
+
+    .delete-btn {
+        background-color: white;
+        margin: 0 auto;
+        display: block;
+        padding:0px;
+        color: #57BDB5;
+    }
+
+    .back-btn {
+        margin: 20px auto;
+        width: 100%;
+        border: 1px solid rgb(216, 216, 216);
+        color: black;
+        background-color: rgb(216, 216, 216);
+    }
 }
