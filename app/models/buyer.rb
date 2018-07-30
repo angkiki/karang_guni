@@ -4,8 +4,10 @@ class Buyer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
   has_many :buyer_requests
   has_many :requests, through: :buyer_requests
   has_many :messages
+
+  # Image uploading
+  mount_uploader :avatar, AvatarUploader
 end

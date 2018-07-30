@@ -6,6 +6,10 @@ git_source(:github) do |repo_name|
 end
 
 ruby '2.5.1'
+# Image sizing
+gem 'mini_magick', '~> 4.3'
+# Image uploader
+gem 'carrierwave', '~> 1.0'
 # Use Geocoder 
 gem 'geocoder'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   require 'buyers/buyer_parameter_sanitizer'
   require 'sellers/seller_parameter_sanitizer'
 
+
   protect_from_forgery with: :exception
 
   protected

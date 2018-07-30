@@ -1,3 +1,18 @@
+
+<div class='text-center'>
+    <h1>Buyer's account</h1>
+    
+    <% if @buyer.avatar.present? %>
+        <%= image_tag @buyer.avatar.url %><br />
+    <% else %>
+        <%= image_tag 'profile_default.png' %><br />
+    <% end %>
+
+    <% if current_buyer %>
+        <%= current_buyer.name %> <br/>
+        <%= current_buyer.email %>
+    <% end %><br>
+
 <div class='row profile'>
     <div class='right mr-auto'>
         <%= current_buyer.name %><br>
@@ -7,6 +22,7 @@
         <%= link_to 'Edit Profile', edit_buyer_registration_path%><br>
         <%= link_to 'Log Out', destroy_buyer_session_path, method: :delete %><br />
     </div>
+
 
     <div class='left ml-auto'>
         <h4>Pending Bids</h4>
@@ -39,4 +55,8 @@
                 <% end %>
             </table>
     </div>
+</div>
+    <%= link_to 'Log Out', destroy_buyer_session_path, method: :delete %><br>
+  
+
 </div>
