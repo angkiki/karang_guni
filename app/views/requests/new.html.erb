@@ -6,8 +6,10 @@
 
   <div class='row'>
     <div class='col-md-6 ml-auto mr-auto new-item-title'>
-      <%= f.label :title, class: "form-group" %>
-      <%= f.text_field :title, class: "form-control", placeholder: "Title For Your Request" %>
+    <div class='row'>
+      <%= f.label :title, 'Title:', class: "form-group col-1 col-form-label" %>
+      <div class='col-11'><%= f.text_field :title, class: "form-control", placeholder: "Title For Your Request" %></div>
+    </div>
     </div>
   </div>
 
@@ -22,8 +24,8 @@
   </div>
 
   <div align="center">
-    <button type="button" id="add-item-field" class="btn btn-md btn-primary">Add Item</button>
-    <%= f.submit 'Submit', class: "btn btn-md btn-success" %>
+    <button type="button" id="add-item-field" class="btn btn-md btn-primary add-btn">Add Item</button>
+    <%= f.submit 'Submit', class: "btn btn-md btn-success submit-btn" %>
   </div>
 
 <% end %>
