@@ -40,15 +40,16 @@
 
 <script type="text/javascript">
   $(document).ready( () => {
-    $('.message-holder').hide();
-    $('.message-link').css('background-color', 'rgba(255, 255, 255, 0)');
-
     $('.message-link').click( function() {
-      $('.message-link').css('background-color', 'rgba(255, 255, 255, 0)');
-      let clicky = $(this).siblings('.message-holder');
-      clicky.show();
-      $(this).css('background-color', 'rgba(81, 190, 181, 0.2)');
-      $('.message-holder').not(clicky).hide();
+      $('.message-link').removeClass('message-link-clicked');
+      $('.message-holder').hide()
+
+      let thisFullID = $(this).attr('id');
+      let thisID = thisFullID[thisFullID.length - 1];
+
+      $('#mh-no-' + thisID).show();
+      $(this).addClass('message-link-clicked');
+
     })
   })
 </script>
