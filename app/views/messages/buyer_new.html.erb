@@ -2,7 +2,7 @@
 <h5>Messaging <%= @seller.name %></h5>
 
 <%= form_for @message, :local => true do |f| %>
-    <%= f.text_area :content, class: 'reply-textarea' %>
+    <%= f.text_area :content, class: 'reply-textarea', required: true %>
     <%= f.hidden_field :sender, :value => 'false' %>
     <%= f.hidden_field :buyer_id, :value => @buyer.id %>
     <%= f.hidden_field :seller_id, :value => @seller.id %>
