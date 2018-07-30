@@ -28,6 +28,14 @@ class Seller < ApplicationRecord
     end
   end
 
+  def get_sellers_messages
+    @s_id = self.id
+    @buyers = self.messages.map { |m| m.buyer }.uniq
+    @messages = @buyers.map do |buyer|
+      buyer.messages.where(seller_id: @s_id)
+    end
+    [@buyers, @messages]
+  end
   # Ensuring no size greater then 500KB to be uploader
   
   validates_processing_of :avatar
@@ -37,14 +45,5 @@ class Seller < ApplicationRecord
     
   def avatar_size_validation
     errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes
-  end
-
-  def get_sellers_messages
-    @s_id = self.id
-    @buyers = self.messages.map { |m| m.buyer }.uniq
-    @messages = @buyers.map do |buyer|
-      buyer.messages.where(seller_id: @s_id)
-    end
-    [@buyers, @messages]
   end
 end
