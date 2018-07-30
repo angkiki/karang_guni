@@ -30,13 +30,11 @@ class MessagesController < ApplicationController
   end
 
   def seller_show
-    @seller_id = current_seller.id
-    @buyers = current_seller.messages.map { |m| m.buyer }.uniq
+    @sellers_messages = current_seller.get_sellers_messages
   end
 
   def buyer_show
-    @buyer_id = current_buyer.id
-    @sellers = current_buyer.messages.map { |m| m.seller }.uniq
+    @buyers_messages = current_buyer.get_buyers_messages
   end
 
   private

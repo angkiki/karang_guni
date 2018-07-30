@@ -10,4 +10,14 @@ class Buyer < ApplicationRecord
 
   # Image uploading
   mount_uploader :avatar, AvatarUploader
+  
+  def get_buyers_messages
+    @b_id = self.id
+    @sellers = self.messages.map { |m| m.seller }.uniq
+    @messages = @sellers.map do |seller|
+      seller.messages.where(buyer_id: @b_id)
+    end
+    [@sellers, @messages]
+  end
+  
 end
