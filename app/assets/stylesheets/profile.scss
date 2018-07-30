@@ -1,0 +1,21 @@
+.profile {
+    margin: 0px auto;
+    width: 900px;
+
+    .right {
+        width: 25%;
+        padding: 20px;
+        // background-color: rgb(230, 230, 230);
+        height: fit-content;
+        border: 2px solid #57BDB5;
+    }
+
+    .left {
+        width: 72%;
+    }
+
+    .right a {
+        color: black;
+        text-decoration: underline;
+    }
+}

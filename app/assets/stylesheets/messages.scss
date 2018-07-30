@@ -1,13 +1,8 @@
 $primary-color: rgba(81, 190, 181, 1);
 
 .messages-all {
-    position: relative;
+    margin: 0 auto;
     width: 800px;
-    margin-top: 20px;
-}
-
-.messages {
-    top: 0px;
 }
 
 .message {
@@ -23,21 +18,17 @@ $primary-color: rgba(81, 190, 181, 1);
     width: 23%;
     border: 1px solid #57BDB5;
     margin-top: -1px;
-    display: inline-block;
-    vertical-align: top;
+    display: block;
     font-size: 14px;
+    height: fit-content;
 }
 
 .message-holder {
     display: none;
-    float: right;
-    width: 67%;
     vertical-align: top;
-    position:absolute;
-    right:0px;
-    top:0px;
-    margin-bottom: 80px;
-    font-size: 14px;
+    font-size: 15px;
+    // height: 0px; 
+    // background-color: red;
 }
 
 .reply-btn {
@@ -48,10 +39,41 @@ $primary-color: rgba(81, 190, 181, 1);
     color: black;
     padding: 10px 40px;
     background-color: #DDDDDD;
-    border-radius: 5px
+    border-radius: 5px;
 }
 
 .reply-link:hover {
     text-decoration: none;
     color: #57BDB5;
+}
+
+// // // // //
+// REPLY 
+// // // // //
+
+.reply-field {
+    margin: 0 auto;
+    width: 600px;
+}
+
+.reply-textarea {
+    height: 230px;
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px 15px;
+}
+
+.reply-send {
+    cursor: pointer;
+    background-color: #57BDB5;
+    border: 0px;
+    padding: 8px 35px;
+    font-size: 13px;
+    border-radius: 5px;
+    float: right;
+    color: white;
+}
+
+.reply-send:hover {
+    color: black;
 }

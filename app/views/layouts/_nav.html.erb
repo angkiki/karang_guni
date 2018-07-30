@@ -25,10 +25,6 @@
         </li>
 
         <li class="nav-item">
-          <%= link_to 'My Requests', request_index_path, class: "nav-link" %>
-        </li>
-
-        <li class="nav-item">
           <%= link_to 'Messages', show_seller_message_path, class: "nav-link" %>
         </li>
       <% end %>
@@ -77,6 +73,7 @@
 
           <% if current_seller %>
             <%= link_to 'Dashboard', seller_path(current_seller.id), class: 'dropdown-item' %>
+            <%= link_to 'My Requests', request_index_path, class: 'dropdown-item' %>
             <%= link_to 'Log Out', destroy_seller_session_path, method: :delete, class: 'dropdown-item' %>
           <% end %>
         </div>

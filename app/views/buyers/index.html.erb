@@ -1,15 +1,42 @@
-<div class='text-center'>
-    <h1>Buyer's account</h1>
-  
-    <% if current_buyer %>
-        <%= current_buyer.name %> <br/>
-        <%= current_buyer.email %>
-    <% end %><br>
+<div class='row profile'>
+    <div class='right mr-auto'>
+        <%= current_buyer.name %><br>
+        <%= current_buyer.email %><br>
+        You have <%= current_buyer.requests.where(status: false).size %> pending bids<br>
+        <%= link_to 'Messages', show_buyer_message_path %><br><br><br><br>
+        <%= link_to 'Edit Profile', edit_buyer_registration_path%><br>
+        <%= link_to 'Log Out', destroy_buyer_session_path, method: :delete %><br />
+    </div>
 
-    <%= link_to 'Log Out', destroy_buyer_session_path, method: :delete %><br />
-    <%= link_to 'Edit Profile', edit_buyer_registration_path%>
+    <div class='left ml-auto'>
+        <h4>Pending Bids</h4>
+            <table class="table table-striped">
+                <tr>
+                <th>Title of Bid</th>
+                <th>Bid Price</th>
+                </tr>
 
+                <% current_buyer.requests.where(status: false).each do |request| %>
+                <tr>
+                    <td><%= request.title %></td>
+                    <td>$<%= request.buyer_requests.find_by(buyer_id: current_buyer.id).price %></td>
+                </tr>
+                <% end %>
+            </table>
 
-  <br>
-  <%= link_to 'Messages', show_buyer_message_path %>
+        <h4>History</h4>
+            <table class="table table-striped">
+                <tr>
+                <th>Title of Bid</th>
+                <th>Accepted Price</th>
+                </tr>
+
+                <% current_buyer.requests.where(status: true).each do |request| %>
+                <tr>
+                    <td><%= request.title %></td>
+                    <td><%= request.buyer_requests.find_by(buyer_id: current_buyer.id).price %></td>
+                </tr>
+                <% end %>
+            </table>
+    </div>
 </div>
