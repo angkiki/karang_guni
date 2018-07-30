@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
 
   def index
     if params[:postal] != nil
-      @request = Request.near(params[:postal], 3).where(status: false)
+      @request = Request.near(params[:postal], 10, units: :km).where(status: false)
     else 
       @request = Request.where(status: false)
     end

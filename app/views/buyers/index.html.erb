@@ -1,6 +1,12 @@
 <div class='text-center'>
     <h1>Buyer's account</h1>
-  
+    
+    <% if @buyer.avatar.present? %>
+        <%= image_tag @buyer.avatar.url %><br />
+    <% else %>
+        <%= image_tag 'profile_default.png' %><br />
+    <% end %>
+
     <% if current_buyer %>
         <%= current_buyer.name %> <br/>
         <%= current_buyer.email %>
