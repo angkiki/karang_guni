@@ -7,15 +7,22 @@ $primary-color: rgba(81, 190, 181, 1);
 
 .message {
     width: 75%;
-    padding: 20px;
+    padding: 15px;
     border-radius: 5px;
-    margin-bottom: 23px;
+    margin-bottom: 28px;
+}
+
+.message-time {
+    font-size: 12px;
+    margin-top: 10px;
+    opacity: 0.5;
 }
 
 .message-link {
     cursor: pointer;
     padding: 10px 0px;
     border: 1px solid #57BDB5;
+    margin-top: -1px;
     font-size: 14px;
     text-align: center;
     width: 80%;
@@ -28,10 +35,6 @@ $primary-color: rgba(81, 190, 181, 1);
 .message-holder {
     display: none;
     font-size: 15px;
-}
-
-.reply-btn {
-    margin-top: 55px;
 }
 
 .reply-link {

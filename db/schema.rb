@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_29_233458) do
+ActiveRecord::Schema.define(version: 2018_07_30_081640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2018_07_29_233458) do
     t.bigint "seller_id"
     t.boolean "sender"
     t.text "content"
+    t.datetime "created_at"
     t.index ["buyer_id"], name: "index_messages_on_buyer_id"
     t.index ["seller_id"], name: "index_messages_on_seller_id"
   end

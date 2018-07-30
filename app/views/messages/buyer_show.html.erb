@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-3 offset-1">
       <% @buyers_messages.first.each do |seller| %>
         <div class="message-link" id="m-no-<%= seller.id %>">
           <%= seller.name %>
@@ -8,15 +8,19 @@
       <% end %>
     </div>
 
-    <div class="col-9">
+    <div class="col-7">
       <% @buyers_messages.last.each do |m_a| %>
         <div class="message-holder" id="mh-no-<%= m_a.first.seller_id %>">
           <% m_a.each do |m| %>
             <div class="message <%= m.sender %> b-id-<%= m.seller_id %>">
-              <%= m.content %>
+              <%= m.content %><br>
+              <div class="message-time"><%= m.created_at.strftime("%Y-%m-%d %H:%M") %></div>
             </div>
           <% end %>
           <br />
+          <p class="text-center">
+            <%= link_to 'Reply', new_buyer_message_path(m_a.first.seller), class: 'reply-link' %>
+          </p>
         </div>
       <% end %>
     </div>
