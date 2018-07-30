@@ -1,13 +1,13 @@
-<div class='text-center'>
-<h1>Hello I am the seller</h1>
+<div class='reply-field'>
+<h5>Messaging <%= @buyer.name %></h5>
 
 <%= form_for @message, :local => true do |f| %>
-    <%= f.text_area :content, size: "60x12" %>
+    <%= f.text_area :content, class: 'reply-textarea', required: true %>
     <%= f.hidden_field :sender, :value => 'true' %>
     <%= f.hidden_field :buyer_id, :value => @buyer.id %>
     <%= f.hidden_field :seller_id, :value => @seller.id %>
     <br>
 
-    <%= f.submit "Create" %>
+    <%= f.submit "Send", class: 'reply-send' %>
 <% end %>
 </div>
