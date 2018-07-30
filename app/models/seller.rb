@@ -7,6 +7,9 @@ class Seller < ApplicationRecord
   has_many :requests
   has_many :messages
 
+  # Image uploading
+  mount_uploader :avatar, AvatarUploader
+
   #postal gives you back the postal code
   def postal_and_country
     "postal_code: '#{postal}', country: 'SG'"
