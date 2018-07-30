@@ -65,7 +65,7 @@ class Buyer::ParameterSanitizer < Devise::ParameterSanitizer
   def initialize(*)
     super
     permit(:sign_up, keys: [:name, :rating, :hp, :remember_me, :avatar, :avatar_cache, :remove_avatar])
-    permit(:account_update, keys: [:name, :rating, :hp, :avatar, :avatar_cache, :remove_avatar ])
+    permit(:account_update, keys: [:name, :rating, :hp, :avatar, :avatar_cache, :remove_avatar])
 
   end
 
