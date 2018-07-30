@@ -57,10 +57,14 @@
     });
 
     $(document).on('click', '.remove-item-line' ,function() {
-      let attrId = $(this).attr('id');
-      let itemNo = parseInt(attrId[attrId.length - 1]);
+      if ( $('.remove-item-line').length < 2 ) {
+          return
+      } else {
+          let attrId = $(this).attr('id');
+          let itemNo = parseInt(attrId[attrId.length - 1]);
 
-      $('#ifsh-' + itemNo).remove();
+          $('#ifsh-' + itemNo).remove();
+      }
     })
 
   });

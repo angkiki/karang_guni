@@ -7,7 +7,7 @@ class Request < ApplicationRecord
 
   has_many :buyer_requests
   has_many :buyers, through: :buyer_requests
-  
+
   after_create :add_lat_and_lon
   geocoded_by :lat_and_lon
 
@@ -24,6 +24,18 @@ class Request < ApplicationRecord
     @buyers = Buyer.all
     @buyers.each do |buyer|
       BuyerMailer.new_request(buyer).deliver
+    end
+  end
+
+  def self.get_nearby_requests(postal)
+    begin
+      Request.near(postal, 3, units: :km).where(status: false)
+    rescue Geocoder::OverQueryLimitError
+      begin
+        Request.near(postal, 3, units: :km).where(status: false)
+      rescue Geocoder::OverQueryLimitError
+        Request.where(status: false)
+      end
     end
   end
 end

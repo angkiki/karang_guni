@@ -41,16 +41,14 @@
 <script type="text/javascript">
   $(document).ready( () => {
     $('.message-link').click( function() {
+      $('.message-link').removeClass('message-link-clicked');
+      $('.message-holder').hide()
+
       let thisFullID = $(this).attr('id');
       let thisID = thisFullID[thisFullID.length - 1];
 
-      $('#mh-no-' + thisID).toggle();
-
-      if ( $(this).hasClass('message-link-clicked') ) {
-        $(this).removeClass('message-link-clicked');
-      } else {
-        $(this).addClass('message-link-clicked');
-      }
+      $('#mh-no-' + thisID).show();
+      $(this).addClass('message-link-clicked');
     })
   })
 </script>
