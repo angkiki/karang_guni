@@ -24,4 +24,13 @@ class Seller < ApplicationRecord
       BuyerMailer.request_closed(request, br.buyer).deliver
     end
   end
+
+  def get_sellers_messages
+    @s_id = self.id
+    @buyers = self.messages.map { |m| m.buyer }.uniq
+    @messages = @buyers.map do |buyer|
+      buyer.messages.where(seller_id: @s_id)
+    end
+    [@buyers, @messages]
+  end
 end
