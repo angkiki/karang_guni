@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="text-center">Requests</h2>
-  
+
   <%= form_tag("/requests", method: 'get') do %>
     <%= label_tag(:postal, 'Search Postal Code') %>
     <%= text_field_tag(:postal) %>
@@ -16,7 +16,7 @@
     <% @request.each do |r| %>
       <tr>
         <td><%= link_to r.title, request_path(r.id) %></td>
-        <td><%= r.seller.address %></td>
+        <td><%= r.seller.postal %></td>
       </tr>
     <% end %>
   </table>

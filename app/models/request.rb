@@ -29,12 +29,12 @@ class Request < ApplicationRecord
 
   def self.get_nearby_requests(postal)
     begin
-      Request.near(postal, 3, units: :km).where(status: false)
+      Request.near("#{postal}, Singapore", 3).where(status: false)
     rescue Geocoder::OverQueryLimitError
       begin
-        Request.near(postal, 3, units: :km).where(status: false)
+        Request.near("#{postal}, Singapore", 3).where(status: false)
       rescue Geocoder::OverQueryLimitError
-        Request.where(status: false)
+        nil
       end
     end
   end

@@ -4,6 +4,14 @@ class RequestsController < ApplicationController
   def index
     if params[:postal] != nil
       @request = Request.get_nearby_requests(params[:postal])
+
+      if @request == nil
+        flash[:danger] = "Error with Google API. Please Try Again Later."
+        @request = Request.where(status: false)
+      elsif @request.empty?
+        flash[:danger] = "No Locations Found Within Your Query. Displaying All Requests."
+        @request = Request.where(status: false)
+      end
     else
       @request = Request.where(status: false)
     end
