@@ -4,7 +4,7 @@ class WalletsController < ApplicationController
         if current_buyer.wallet == nil
             @buyer_wallet = 0
         else
-            @buyer_wallet = current_buyer.wallet.total_amount
+            @buyer_wallet = current_buyer.wallet.buyer_amount
         end
     end
 
@@ -12,7 +12,7 @@ class WalletsController < ApplicationController
         if current_seller.wallet == nil
             @seller_wallet = 0
         else
-            @seller_wallet = current_seller.wallet.total_amount
+            @seller_wallet = current_seller.wallet.seller_amount
         end
     end
 

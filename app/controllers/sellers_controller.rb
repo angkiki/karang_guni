@@ -23,20 +23,16 @@ class SellersController < ApplicationController
     @seller = @request.seller #gets the seller request
     @price = @bid.price
 
-    if Wallet.find_by(@buyer.id) == nil
-      Wallet.create!(seller_id: @seller, buyer_id: @buyer, total_amount: @price)
+    if @buyer.wallet == nil && @seller.wallet == nil
+      Wallet.create!(seller_id: @seller.id, buyer_id: @buyer.id, total_amount: @price)
     else
-      @buyer_amount = Wallet.find(@buyer.id).total_amount
+      @buyer_amount = @buyer.wallet.total_amount
       @buyer_amount -= @price 
-      @buyer.wallet.update(total_amount: @buyer_amount)
-    end
-  
-    if Wallet.find_by(@seller.id) == nil
-      Wallet.create!(seller_id: @seller, buyer_id: @buyer, total_amount: @price)
-    else
-      @seller_amount = Wallet.find(@seller.id).total_amount
+      @buyer.wallet.update(buyer_amount: @buyer_amount)
+
+      @seller_amount = @seller.wallet.total_amount
       @seller_amount += @price 
-      @seller.wallet.update(total_amount: @seller_amount)
+      @seller.wallet.update(seller_amount: @seller_amount)
     end
     
     # get the total amount in the current wallet
