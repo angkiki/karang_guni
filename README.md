@@ -1,33 +1,20 @@
-# TO-DO List:
+# Karang Guni App
 
-### Jodi:
-* Seller (Implement Devise)
-* ActionMailer
-##### Columns for Seller Table:
-* name
-* email
-* password
-* hp
-* address
+### Created with Lots of Love by:
+### [Jodi](https://github.com/jodich), [Bryan](https://github.com/Phangster), [Gabriel](https://github.com/angkiki)
 
-### Bryan:
-* Buyer (Implement Devise)
-* Messaging
-##### Columns for Buyer Table:
-* name
-* email
-* password
-* hp
-* rating
+#### Sellers Are Able To:
+* Create an account
+* Upload a photo
+* Automatic Geo-Location by postal code
+* List items they want to sell
+* Create multiple requests
+* Dashboard to manage all requests
+* Message buyers on the platform
+* Accept suitable bids
 
-### Gabriel:
-* Request/Items (Implement One-Many, Nested Attributes)
-* Request/Buyer (Many to Many, Join Table BuyersRequests)
-##### Columns for Request
-* seller_id
-* title
-##### Columns for Item
-* request_id
-* name
-* description
-* qty
+#### Buyers Are Able To:
+* Create an account
+* Search for requests by proximity (postal code)
+* Submit bids for interested items
+* Message sellers on the platform
