@@ -36,8 +36,34 @@ Rails.application.routes.draw do
   get '/buyer/messages', to:'messages#buyer_show', as:'show_buyer_message'
   get '/seller/messages', to:'messages#seller_show', as:'show_seller_message'
 
+  get '/buyers/wallets', to:'wallets#buyer_wallet', as: 'show_buyer_wallet'
+  get '/seller/wallets', to:'wallets#seller_wallet', as: 'show_seller_wallet'
 
   get '/buyers/:id', to: 'buyers#index', as: 'buyer'
   get '/sellers/:id', to: 'sellers#index', as: 'seller'
+
+
+  # display how much he has in his wallet
+  # who the buyer is => will lead you to his wallet
+  # current_buyer 
+
+  # /buyer/:id
+  # buyer_path(id: @buyer.id)
+
+  # /banana/:apple/:pear
+  # banana_path(apple: params_to_pass_in)
+
+  # params[:apple] => this will give me what is after banana
+  # if the route was /banana/yellow/green, then
+  # params[:apple] => yellow
+  # params[:pear] => green 
+
+  # /fruit/:type (path name is called fruit_path)
+  # for the apple link fruit_path(type: apple)
+  # params[:type] => apple 
+
+  # buyer_path(@buyer)
+  # redirect_to @buyer
+
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_081640) do
+ActiveRecord::Schema.define(version: 2018_07_31_015542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,12 +99,14 @@ ActiveRecord::Schema.define(version: 2018_07_30_081640) do
     t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true
   end
 
-  create_table "sender_reciever", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "reciever_id"
-    t.text "message"
+  create_table "wallets", force: :cascade do |t|
+    t.bigint "seller_id"
+    t.bigint "buyer_id"
+    t.float "total_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_wallets_on_buyer_id"
+    t.index ["seller_id"], name: "index_wallets_on_seller_id"
   end
 
   add_foreign_key "items", "requests"

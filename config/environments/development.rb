@@ -32,7 +32,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # To not send out the emails in development
-  config.action_mailer.delivery_method = :test
+  config.action_mailer.delivery_method = :test #just need to comment this out, then the email will work in heroku, however it does not work locally
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Print deprecation notices to the Rails logger.

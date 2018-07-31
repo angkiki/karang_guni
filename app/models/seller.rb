@@ -6,6 +6,7 @@ class Seller < ApplicationRecord
 
   has_many :requests
   has_many :messages
+  has_one :wallet
 
   # Image uploading
   mount_uploader :avatar, AvatarUploader

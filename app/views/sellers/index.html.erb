@@ -19,6 +19,7 @@
         You have <%= current_seller.requests.where(status: false).size %> open request<br>
         <%= link_to 'Messages', show_seller_message_path %><br><br><br><br>
         <%= link_to 'Edit Profile', edit_seller_registration_path%><br>
+        <%= link_to 'Wallet', show_seller_wallet_path%><br>
         <%= link_to 'Log Out', destroy_seller_session_path, method: :delete %><br />
     </div>
 

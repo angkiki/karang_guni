@@ -7,6 +7,8 @@ class Buyer < ApplicationRecord
   has_many :buyer_requests
   has_many :requests, through: :buyer_requests
   has_many :messages
+  has_one :wallet
+
 
   # Image uploading
   mount_uploader :avatar, AvatarUploader

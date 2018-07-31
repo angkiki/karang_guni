@@ -17,6 +17,7 @@
         You have <%= current_buyer.requests.where(status: false).size %> pending bids<br>
         <%= link_to 'Messages', show_buyer_message_path %><br><br><br><br>
         <%= link_to 'Edit Profile', edit_buyer_registration_path%><br>
+        <%= link_to 'Wallet', show_buyer_wallet_path%><br>
         <%= link_to 'Log Out', destroy_buyer_session_path, method: :delete %><br />
     </div>
 
