@@ -18,6 +18,9 @@
             </div>
           <% end %>
           <br />
+          <p class="text-center">
+            <%= link_to 'Reply', new_seller_message_path(m_a.first.buyer), class: 'reply-link' %>
+          </p>
         </div>
       <% end %>
     </div>
